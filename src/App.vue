@@ -26,23 +26,32 @@
     </v-navigation-drawer>
     <v-toolbar
       app
+      color="blue lighten-3"
+      dark
       :clipped-left="clipped"
+      fixed
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
+      <v-btn icon @click.stop="clipped = !clipped" class="hidden-xs-only">
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title><strong>羅博特科技</strong></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn flat>
+          <v-icon left dark>exit_to_app</v-icon>
+          <b class="subheading"><strong>登入</strong></b>
+        </v-btn>
+      </v-toolbar-items>
+      <v-btn icon class="hidden-sm-and-up">
+        <v-icon>more_vert</v-icon>
       </v-btn>
+      <!--<v-btn icon @click.stop="rightDrawer = !rightDrawer">-->
+        <!--<v-icon>menu</v-icon>-->
+      <!--</v-btn>-->
     </v-toolbar>
     <v-content>
       <router-view/>
@@ -63,9 +72,18 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
-    </v-footer>
+    <!--<v-footer :fixed="fixed" app>-->
+      <!--<v-layout row wrap align-center>-->
+        <!--<v-flex xs12>-->
+          <!--<div class="white&#45;&#45;text ml-3">-->
+            <!--Made with-->
+            <!--<v-icon class="red&#45;&#45;text">favorite</v-icon>-->
+            <!--by <a class="white&#45;&#45;text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>-->
+            <!--and <a class="white&#45;&#45;text" href="https://github.com/vwxyzjn">Costa Huang</a>-->
+          <!--</div>-->
+        <!--</v-flex>-->
+      <!--</v-layout>-->
+    <!--</v-footer>-->
   </v-app>
 </template>
 
@@ -83,7 +101,6 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
     }
   },
   name: 'App'
