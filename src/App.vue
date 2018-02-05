@@ -26,10 +26,20 @@
         </v-btn>
       </v-toolbar-items>
 
+      <v-menu bottom left class="hidden-sm-and-up">
+        <v-btn icon slot="activator" dark>
+            <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-list>
+            <v-list-tile v-show="!userIsAuthenticated" @click="dialog = !dialog">
+                <v-list-tile-title><strong>登入</strong></v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile v-show="userIsAuthenticated" @click="logout">
+                <v-list-tile-title><strong>登出</strong></v-list-tile-title>
+            </v-list-tile>
+        </v-list>
+      </v-menu>
 
-      <v-btn icon class="hidden-sm-and-up">
-        <v-icon>more_vert</v-icon>
-      </v-btn>
 
       <v-dialog v-model="dialog" persistent max-width="500px">
         <v-card>
