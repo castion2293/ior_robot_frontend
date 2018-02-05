@@ -1,6 +1,7 @@
 export default (to, from, next) => {
-    //console.log(localStorage.getItem('token'))
-    if (localStorage.getItem('token')) {
+    let token = localStorage.getItem('token')
+
+    if (token !== null && token !== 'undefined') {
         next()
     } else {
         next('/')

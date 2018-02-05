@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions  } from 'vuex'
 
 export default {
   data () {
@@ -139,10 +139,12 @@ export default {
   },
   methods: {
       ...mapMutations([
-          'signUserIn',
-          'signUserOut',
           'toggleDrawer',
           'toggleminiVariant'
+      ]),
+      ...mapActions([
+          'signUserIn',
+          'signUserOut',
       ]),
       login () {
           let data = {
