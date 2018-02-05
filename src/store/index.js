@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -25,9 +26,11 @@ export const store = new Vuex.Store({
             axios.post('http://localhost:8000/api/login', payload)
               .then(response => {
                   let token = response.data.token
-                  console.log(token)
+                  //console.log(token)
                   state.user = token
                   localStorage.setItem('token', token)
+
+                  router.push('/dashboard')
               })
               .catch(error => {
                   console.log(error)
@@ -39,13 +42,18 @@ export const store = new Vuex.Store({
 
             axios.get('http://localhost:8000/api/logout')
                 .then(response => {
-                    console.log(response)
+                    //console.log(response)
                     localStorage.removeItem('token')
                     state.user = null
+
+                    router.push('/')
                 })
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        autoSignIn (state, token) {
+            state.user = token
         },
         toggleDrawer (state) {
             state.drawer = !state.drawer

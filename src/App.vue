@@ -50,8 +50,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="login">Save</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="dialog = false">取消</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="login">登入</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -144,14 +144,14 @@ export default {
 
           this.dialog = !this.dialog
 
-          this.$router.push('/dashboard')
+          //this.$router.push('/dashboard')
       },
       logout () {
           this.signUserOut()
 
-          this.$router.push('/')
+          //this.$router.push('/')
 
-          this.drawer = false
+          //this.drawer = false
       },
       toggleDraw () {
           this.toggleDrawer()
