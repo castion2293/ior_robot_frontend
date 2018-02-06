@@ -74,12 +74,12 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="" router to="/dashboard/products/status/runStatus">
                         <v-list-tile-content>
                             <v-list-tile-title><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="" router to="/dashboard/products/status/ioStatus">
                         <v-list-tile-content>
                             <v-list-tile-title><b>I/O狀態</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -103,7 +103,7 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="" router to="/dashboard/products/alarm/alarmHistory">
                         <v-list-tile-content>
                             <v-list-tile-title><b>異常列表</b></v-list-tile-title>
                         </v-list-tile-content>
