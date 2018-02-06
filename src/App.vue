@@ -126,7 +126,7 @@ export default {
   },
   name: 'App',
   mounted () {
-
+      this.$store.dispatch('autoSignIn')
   },
   computed: {
       ...mapGetters([
@@ -134,7 +134,7 @@ export default {
           'miniVariant'
       ]),
       userIsAuthenticated () {
-          return this.user !== null && this.user !== undefined
+          return this.user !== null && this.user !== 'undefined'
       }
   },
   methods: {
@@ -155,15 +155,9 @@ export default {
           this.signUserIn(data)
 
           this.dialog = !this.dialog
-
-          //this.$router.push('/dashboard')
       },
       logout () {
           this.signUserOut()
-
-          //this.$router.push('/')
-
-          //this.drawer = false
       },
       toggleDraw () {
           this.toggleDrawer()

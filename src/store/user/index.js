@@ -45,8 +45,8 @@ export default {
                     console.log(error)
                 })
         },
-        autoSignIn ({commit}, payload) {
-            commit('setUser', payload)
+        autoSignIn ({commit},) {
+            commit('setUser', localStorage.getItem('token'))
         }
     }
 }
