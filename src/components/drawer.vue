@@ -237,7 +237,7 @@
                 let my_product = this.products.find(product => {
                     return product.name == product_name
                 })
-                
+
                 this.robot_src = my_product.avatar
             }
         }
