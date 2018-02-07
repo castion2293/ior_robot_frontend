@@ -25,9 +25,10 @@ export default new Router({
         beforeEnter: AuthGuard
     },
     {
-        path: '/dashboard/products/status/runStatus',
+        path: '/dashboard/products/status/runStatus/:product_id',
         name: 'runStatus',
         component: runStatus,
+        props: true,
         beforeEnter: AuthGuard
     },
     {

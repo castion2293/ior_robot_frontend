@@ -1,24 +1,37 @@
 export default {
     state: {
         all_su_status: null,
-        all_total_status: null
+        all_total_status: null,
+        single_su_status: null,
+        single_total_status: null
     },
     getters: {
         all_su_status (state) {
-            return state.su_status
+            return state.all_su_status
         },
         all_total_status (state) {
-            return state.su_status
+            return state.all_total_status
         },
+        single_su_status (state) {
+            return state.single_su_status
+        },
+        single_total_status (state) {
+            return state.single_total_status
+        }
     },
     mutations: {
         setAllSUStatus (state, payload) {
             state.all_su_status = payload
-            console.log(state.all_su_status)
         },
         setAllTotalStatus (state, payload) {
             state.all_total_status = payload
-            console.log(state.all_total_status)
+        },
+        setSingleSUStatue (state, payload) {
+            state.single_su_status = payload
+            console.log(state.single_su_status)
+        },
+        setSingleTotalStatue (state, payload) {
+            state.single_total_status = payload
         }
     },
     actions: {
@@ -41,6 +54,30 @@ export default {
             axios.get('http://localhost:8000/api/total_status')
                 .then(response => {
                     commit('setAllTotalStatus', response.data.data.items)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getSingleSUStatue ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`http://localhost:8000/api/status/${payload}`)
+                .then(response => {
+                    commit('setSingleSUStatue', response.data.data.items)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getSingleTotalStatus ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`http://localhost:8000/api/total_status/${payload}`)
+                .then(response => {
+                    commit('setSingleTotalStatue', response.data.data.items)
                 })
                 .catch(error => {
                     console.log(error)
