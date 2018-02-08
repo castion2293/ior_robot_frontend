@@ -373,7 +373,6 @@
             </v-layout>
         </v-container>
 
-
         <drawer></drawer>
     </v-app>
 </template>

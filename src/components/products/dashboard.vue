@@ -7,26 +7,28 @@
         >
             <v-layout row wrap>
                 <v-flex xs12 sm6 md4 v-for="product in products" :key="product.ID">
-                    <v-card color="blue lighten-1" ripple class="white--text" style="cursor:pointer;" :to="`/dashboard/products/status/runStatus/${product.ID}`">
-                        <v-container fluid grid-list-lg>
-                            <v-layout row>
-                                <v-flex xs7>
-                                    <div>
-                                        <div class="headline">{{ product.name }}</div>
-                                        <div class="subheading mt-5">MODE: {{ product.MODE }}</div>
-                                        <div class="subheading">STATUS: {{ product.STATUS }}</div>
-                                    </div>
-                                </v-flex>
-                                <v-flex xs5>
-                                    <v-card-media
-                                            :src="product.photo"
-                                            height="150px"
-                                            contain
-                                    ></v-card-media>
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
-                    </v-card>
+                    <div @click="selectProduct(product)">
+                        <v-card color="blue lighten-1" ripple class="white--text" style="cursor:pointer;" :to="`/dashboard/products/status/runStatus/${product.ID}`">
+                            <v-container fluid grid-list-lg>
+                                <v-layout row>
+                                    <v-flex xs7>
+                                        <div>
+                                            <div class="headline">{{ product.name }}</div>
+                                            <div class="subheading mt-5">MODE: {{ product.MODE }}</div>
+                                            <div class="subheading">STATUS: {{ product.STATUS }}</div>
+                                        </div>
+                                    </v-flex>
+                                    <v-flex xs5>
+                                        <v-card-media
+                                                :src="product.photo"
+                                                height="150px"
+                                                contain
+                                        ></v-card-media>
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card>
+                    </div>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -37,7 +39,7 @@
 
 <script>
     import drawer from '../drawer'
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "dashboard",
@@ -58,7 +60,12 @@
             }
         },
         methods: {
-
+            ...mapActions([
+                'reloadDrawerProducts',
+            ]),
+            selectProduct (product) {
+                this.reloadDrawerProducts(product.name)
+            }
         },
         mounted () {
             this.$store.dispatch('getAllSUStatus')

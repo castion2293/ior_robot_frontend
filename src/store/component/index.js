@@ -2,7 +2,7 @@ export default {
     state: {
         drawer: false,
         miniVariant: false,
-        drawer_products: ['me'],
+        drawer_products: [],
         drawer_product: {
             name: ''
         }
