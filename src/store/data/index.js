@@ -2,8 +2,14 @@ export default {
     state: {
         all_su_status: null,
         all_total_status: null,
-        single_su_status: null,
-        single_total_status: null
+        single_su_status: {
+            name: ''
+        },
+        single_total_status: {
+            SERVO: '',
+            DIN_249_264: [''],
+            DOUT_249_264: ['']
+        }
     },
     getters: {
         all_su_status (state) {
@@ -28,7 +34,6 @@ export default {
         },
         setSingleSUStatue (state, payload) {
             state.single_su_status = payload
-            console.log(state.single_su_status)
         },
         setSingleTotalStatue (state, payload) {
             state.single_total_status = payload

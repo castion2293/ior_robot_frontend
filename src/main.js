@@ -7,6 +7,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import axios from 'axios'
 import { store } from './store'
+import lodash from 'lodash'
 
 window.axios = axios;
 
@@ -24,6 +25,8 @@ Vue.use(Vuetify, { theme: {
   success: '#4CAF50',
   warning: '#FFC107'
 }})
+
+window._ = lodash
 
 Vue.config.productionTip = false
 

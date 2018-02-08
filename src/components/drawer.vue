@@ -23,7 +23,7 @@
                             autocomplete
                             append-icon="playlist_play"
                             hide-details
-                            @input="changeProduct(e1)"
+                            @input="changeProduct(drawer_product.name)"
                     >
                         <template slot="selection" slot-scope="data">
                             <v-chip
@@ -57,7 +57,7 @@
             </v-card>
 
             <v-card class="pb-3">
-                <v-card-media :src="robot_src" height="200px" contain>
+                <v-card-media :src="drawer_product.avatar" height="200px" contain>
                 </v-card-media>
             </v-card>
 
@@ -170,7 +170,7 @@
                             <v-list-tile-title><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="test">
                         <v-list-tile-content>
                             <v-list-tile-title><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -190,7 +190,6 @@
                         </v-list-tile-action>
                     </v-list-tile>
                 </v-list-group>
-
             </v-list>
         </v-navigation-drawer>
     </v-app>
@@ -203,42 +202,60 @@
         name: "drawer",
         data ()  {
             return {
-                e1: '',
-                products: [
-                    { header: 'Group 1'},
-                    { name: 'THL300', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/300-254x300.png' },
-                    { name: 'THL1200', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/THL-1200.png' },
-                    { name: 'THE400', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/THE-page.png' },
-                    { divider: true },
-                    { header: 'Group 2'},
-                    { name: 'TVL500', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/tvl500-232x300.png' },
-                    { name: 'TV800', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/tv800-243x300.png' },
-                    { name: 'TVM900', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/TVM900-243x300.png' },
-                ],
-                robot_src: ''
+                // products: [
+                //     { header: 'Group 1'},
+                //     { name: 'TV800', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/tv800-243x300.png' },
+                //     { divider: true },
+                //     { header: 'Group 2'},
+                //     { name: 'THL300', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/300-254x300.png' },
+                //     { divider: true },
+                // ],
+                e1: ''
             }
         },
         computed: {
             ...mapGetters([
                 'user',
                 'drawer',
-                'miniVariant'
+                'miniVariant',
+                'drawer_products',
+                'drawer_product'
             ]),
             userIsAuthenticated () {
                 return this.user !== null && this.user !== undefined
+            },
+            products () {
+                return this.drawer_products
+                // return  [
+                //     { header: 'Group 1'},
+                //     { name: 'TV800', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/tv800-243x300.png' },
+                //     { divider: true },
+                //     { header: 'Group 2'},
+                //     { name: 'THL300', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/300-254x300.png' },
+                //     { divider: true },
+                // ]
+            },
+            el () {
+                return drawer_product.name
             }
         },
         mounted () {
-            this.e1 = this.products[1].name
-            this.robot_src = this.products[1].avatar
+            this.$store.dispatch('getDrawerProducts')
         },
         methods: {
             changeProduct (product_name) {
-                let my_product = this.products.find(product => {
-                    return product.name == product_name
-                })
+                console.log(this.products)
+                // let my_product = this.products.find(product => {
+                //     return product.name == product_name
+                // })
+                // //
+                // // this.robot_src = my_product.avatar
+                //
+                // console.log(my_product.name)
 
-                this.robot_src = my_product.avatar
+            },
+            test () {
+                console.log(this.products)
             }
         }
     }
