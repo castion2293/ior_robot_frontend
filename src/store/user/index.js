@@ -2,7 +2,12 @@ import router from '../../router'
 
 export default {
     state: {
-        user: null,
+        user: {
+            name: '',
+            email: '',
+            photo: '',
+            token: ''
+        },
     },
     getters: {
         user (state) {
@@ -18,10 +23,14 @@ export default {
         signUserIn ({commit}, payload) {
             axios.post(host + '/login', payload)
                 .then(response => {
-                    let token = response.data.token
+                    let user = response.data
 
-                    commit('setUser', token)
-                    localStorage.setItem('token', token)
+                    commit('setUser', user)
+
+                    localStorage.setItem('token', user.token)
+                    localStorage.setItem('name', user.name)
+                    localStorage.setItem('email', user.email)
+                    localStorage.setItem('photo', user.photo)
 
                     router.push('/dashboard')
                 })
@@ -35,9 +44,20 @@ export default {
 
             axios.get(host + '/logout')
                 .then(response => {
-                    //console.log(response)
+
                     localStorage.removeItem('token')
-                    commit('setUser', null)
+                    localStorage.removeItem('name')
+                    localStorage.removeItem('email')
+                    localStorage.removeItem('photo')
+
+                    let user = {
+                        name: '',
+                        email: '',
+                        photo: '',
+                        token: ''
+                    }
+
+                    commit('setUser', user)
 
                     router.push('/')
                 })
@@ -46,7 +66,27 @@ export default {
                 })
         },
         autoSignIn ({commit},) {
-            commit('setUser', localStorage.getItem('token'))
+            let user = {
+                name: localStorage.getItem('name'),
+                email: localStorage.getItem('email'),
+                photo: localStorage.getItem('photo'),
+                token: localStorage.getItem('token')
+            }
+
+            commit('setUser', user)
+        },
+        checkUserStatus ({commit}) {
+            let token = localStorage.getItem('token')
+            if (token !== null && token !== 'undefined') {
+                let user = {
+                    name: localStorage.getItem('name'),
+                    email: localStorage.getItem('email'),
+                    photo: localStorage.getItem('photo'),
+                    token: localStorage.getItem('token')
+                }
+
+                commit('setUser', user)
+            }
         }
     }
 }

@@ -22,9 +22,9 @@
 
       <v-toolbar-title v-show="userIsAuthenticated" class="">
           <v-list-tile-avatar class="mr-1">
-              <img src="https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/web_pics/Users-User-Male-4-icon.png" />
+              <img :src="user.photo" />
           </v-list-tile-avatar>
-          <span class="hidden-xs-only">Nick</span>
+          <span class="hidden-xs-only">{{ user.name }}</span>
           <v-menu offset-y class="hidden-xs-only">
               <v-btn icon slot="activator" dark>
                   <v-icon>keyboard_arrow_down</v-icon>
@@ -161,12 +161,12 @@ export default {
       rightDrawer: false,
       dialog: false,
       email: '',
-      password: ''
+      password: '',
     }
   },
   name: 'App',
-  mounted () {
-      this.$store.dispatch('autoSignIn')
+  mounted ()  {
+      this.$store.dispatch('checkUserStatus')
   },
   computed: {
       ...mapGetters([
@@ -174,7 +174,7 @@ export default {
           'miniVariant'
       ]),
       userIsAuthenticated () {
-          return this.user !== null && this.user !== 'undefined'
+          return this.user.token !== null && this.user.token !== 'undefined' && this.user.token !== ''
       }
   },
   methods: {
