@@ -2,8 +2,10 @@ export default {
     state: {
         drawer: false,
         miniVariant: false,
-        drawer_products: [],
-        drawer_product: {}
+        drawer_products: ['me'],
+        drawer_product: {
+            name: ''
+        }
     },
     getters: {
         drawer (state) {
@@ -32,7 +34,8 @@ export default {
                 return {
                     name: product.name,
                     group: product.group,
-                    avatar: product.photo
+                    avatar: product.photo,
+                    product_id: product.product_id
                 }
             })
 
@@ -55,7 +58,14 @@ export default {
             })
 
             state.drawer_products = _.drop(elem)
+        },
+        setDrawerProduct (state) {
             state.drawer_product = state.drawer_products[1]
+        },
+        resetDrawerProduct (state, payload) {
+            state.drawer_product = state.drawer_products.find(product => {
+                return product.name === payload
+            })
         }
     },
     actions: {
@@ -66,6 +76,20 @@ export default {
             axios.get(host + '/product')
                 .then(response => {
                     commit('setDrawerProducts', response.data.data.items)
+                    commit('setDrawerProduct')
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        reloadDrawerProducts ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(host + '/product')
+                .then(response => {
+                    commit('setDrawerProducts', response.data.data.items)
+                    commit('resetDrawerProduct', payload)
                 })
                 .catch(error => {
                     console.log(error)

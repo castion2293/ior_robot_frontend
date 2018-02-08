@@ -13,7 +13,7 @@
                 <v-card-text>
                     <v-select
                             v-bind:items="products"
-                            v-model="e1"
+                            v-model="drawer_product.name"
                             label="產品選擇"
                             item-text="name"
                             item-value="name"
@@ -74,7 +74,7 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="" router to="/dashboard/products/status/runStatus">
+                    <v-list-tile ripple @click="" :to="`/dashboard/products/status/runStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -170,7 +170,7 @@
                             <v-list-tile-title><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="test">
+                    <v-list-tile ripple @click="">
                         <v-list-tile-content>
                             <v-list-tile-title><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -196,7 +196,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "drawer",
@@ -210,7 +210,6 @@
                 //     { name: 'THL300', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/300-254x300.png' },
                 //     { divider: true },
                 // ],
-                e1: ''
             }
         },
         computed: {
@@ -226,37 +225,22 @@
             },
             products () {
                 return this.drawer_products
-                // return  [
-                //     { header: 'Group 1'},
-                //     { name: 'TV800', group: 'Group 1', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/tv800-243x300.png' },
-                //     { divider: true },
-                //     { header: 'Group 2'},
-                //     { name: 'THL300', group: 'Group 2', avatar: 'https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/product_pics/300-254x300.png' },
-                //     { divider: true },
-                // ]
             },
-            el () {
-                return drawer_product.name
-            }
         },
         mounted () {
-            this.$store.dispatch('getDrawerProducts')
+            let product = this.$store.getters.drawer_product.name;
+
+            if (product == null || product === 'undefined' || product === '') {
+                this.$store.dispatch('getDrawerProducts')
+            }
         },
         methods: {
+            ...mapActions([
+                'reloadDrawerProducts',
+            ]),
             changeProduct (product_name) {
-                console.log(this.products)
-                // let my_product = this.products.find(product => {
-                //     return product.name == product_name
-                // })
-                // //
-                // // this.robot_src = my_product.avatar
-                //
-                // console.log(my_product.name)
-
+                this.reloadDrawerProducts(product_name)
             },
-            test () {
-                console.log(this.products)
-            }
         }
     }
 </script>
