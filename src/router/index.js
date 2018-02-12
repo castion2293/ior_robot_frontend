@@ -32,9 +32,10 @@ export default new Router({
         beforeEnter: AuthGuard
     },
     {
-        path: '/dashboard/products/status/ioStatus',
+        path: '/dashboard/products/status/ioStatus/:product_id',
         name: 'ioStatus',
         component: ioStatus,
+        props: true,
         beforeEnter: AuthGuard
     },
     {

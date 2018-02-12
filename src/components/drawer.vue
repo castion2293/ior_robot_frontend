@@ -79,7 +79,7 @@
                             <v-list-tile-title><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="" router to="/dashboard/products/status/ioStatus">
+                    <v-list-tile ripple @click="" :to="`/dashboard/products/status/ioStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title><b>I/O狀態</b></v-list-tile-title>
                         </v-list-tile-content>
