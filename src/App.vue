@@ -110,6 +110,20 @@
         </v-card>
       </v-dialog>
 
+      <v-dialog v-model="errorMessage" persistent max-width="500px">
+        <v-card>
+            <v-alert color="error" icon="warning" value="true">
+                {{ error }}
+            </v-alert>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="red darken-1" flat @click.native="dismissError">
+                    <v-icon>cancel</v-icon>
+                </v-btn>
+            </v-card-actions>
+        </v-card>
+      </v-dialog>
+
     </v-toolbar>
     <v-content>
       <router-view/>
@@ -171,11 +185,15 @@ export default {
   computed: {
       ...mapGetters([
           'user',
-          'miniVariant'
+          'miniVariant',
+          'error'
       ]),
       userIsAuthenticated () {
           return this.user.token !== null && this.user.token !== 'undefined' && this.user.token !== ''
-      }
+      },
+      errorMessage () {
+          return this.error !== null && this.error !== 'undefined'
+      },
   },
   methods: {
       ...mapMutations([
@@ -185,6 +203,7 @@ export default {
       ...mapActions([
           'signUserIn',
           'signUserOut',
+          'clearError'
       ]),
       login () {
           let data = {
@@ -204,6 +223,9 @@ export default {
       },
       toggleMiniVariant () {
           this.toggleminiVariant()
+      },
+      dismissError () {
+          this.clearError()
       }
   }
 }

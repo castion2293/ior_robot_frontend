@@ -1,5 +1,7 @@
 <template>
     <v-app>
+        <loader v-if="loading"></loader>
+
         <v-container
                 fluid
                 style="min-height: 0;"
@@ -39,12 +41,14 @@
 
 <script>
     import drawer from '../drawer'
+    import loader from '../loader'
     import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "dashboard",
         components: {
-            drawer
+            drawer,
+            loader
         },
         data () {
             return {
@@ -54,6 +58,7 @@
         computed: {
             ...mapGetters([
                 'all_su_status',
+                'loading'
             ]),
             products () {
                 return this.all_su_status

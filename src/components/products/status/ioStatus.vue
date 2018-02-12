@@ -1,5 +1,7 @@
 <template>
     <v-app>
+        <loader v-if="loading"></loader>
+
         <v-container
                 fluid
                 style="min-height: 0;"
@@ -48,19 +50,19 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_1_16">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_1_16" :key="`input_${index + 1}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 1 }}</div>
                                                         <div v-else class="grey darken-1  white--text text-xs-center">{{ index + 1 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_17_32">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_17_32" :key="`input_${index + 17}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 17 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 17 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_33_48">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_33_48" :key="`input_${index + 33}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 33 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 33 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_49_64">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_49_64" :key="`input_${index + 49}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 49 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 49 }}</div>
                                                     </v-flex>
@@ -75,19 +77,19 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_101_116">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_101_116" :key="`input_${index + 101}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 101 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 101 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_117_132">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_117_132" :key="`input_${index + 117}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 117 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 117 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_133_148">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_133_148" :key="`input_${index + 133}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 133 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 133 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_149_164">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_149_164" :key="`input_${index + 149}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 149 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 149 }}</div>
                                                     </v-flex>
@@ -102,19 +104,19 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_201_216">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_201_216" :key="`input_${index + 201}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 201 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 201 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_217_232">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_217_232" :key="`input_${index + 217}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 217 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 217 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_233_248">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_233_248" :key="`input_${index + 233}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 233 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 233 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DIN_249_264">
+                                                    <v-flex xs2 v-for="(input, index) in product.DIN_249_264" :key="`input_${index + 249}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 249 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 249 }}</div>
                                                     </v-flex>
@@ -170,20 +172,20 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_1_16">
-                                                        <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 1 }}</div>
+                                                    <v-flex xs2 v-for="(output, index) in product.DOUT_1_16" :key="`output_${index + 1}`">
+                                                        <div v-if="output" class="light-blue darken-1 white--text text-xs-center">{{ index + 1 }}</div>
                                                         <div v-else class="grey darken-1  white--text text-xs-center">{{ index + 1 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_17_32">
-                                                        <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 17 }}</div>
+                                                    <v-flex xs2 v-for="(output, index) in product.DOUT_17_32" :key="`output_${index + 17}`">
+                                                        <div v-if="output" class="light-blue darken-1 white--text text-xs-center">{{ index + 17 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 17 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_33_48">
-                                                        <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 33 }}</div>
+                                                    <v-flex xs2 v-for="(output, index) in product.DOUT_33_48" :key="`output_${index +33}`">
+                                                        <div v-if="output" class="light-blue darken-1 white--text text-xs-center">{{ index + 33 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 33 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_49_64">
-                                                        <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 49 }}</div>
+                                                    <v-flex xs2 v-for="(output, index) in product.DOUT_49_64" :key="`output_${index + 49}`">
+                                                        <div v-if="output" class="light-blue darken-1 white--text text-xs-center">{{ index + 49 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 49 }}</div>
                                                     </v-flex>
                                                 </v-layout>
@@ -197,19 +199,19 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_101_116">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_101_116" :key="`output_${index + 101}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 101 }}</div>
                                                         <div v-else class="grey darken-1  white--text text-xs-center">{{ index + 101 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_117_132">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_117_132" :key="`output_${index + 117}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 117 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 117 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_133_148">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_133_148" :key="`output_${index + 133}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 133 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 133 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_149_164">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_149_164" :key="`output_${index + 149}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 149 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 149 }}</div>
                                                     </v-flex>
@@ -224,19 +226,19 @@
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_201_216">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_201_216" :key="`output_${index + 201}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 201 }}</div>
                                                         <div v-else class="grey darken-1  white--text text-xs-center">{{ index + 201 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_217_232">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_217_232" :key="`output_${index + 217}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 217 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 217 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_233_248">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_233_248" :key="`output_${index + 233}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 233 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 233 }}</div>
                                                     </v-flex>
-                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_249_264">
+                                                    <v-flex xs2 v-for="(input, index) in product.DOUT_249_264" :key="`output_${index + 249}`">
                                                         <div v-if="input" class="light-blue darken-1 white--text text-xs-center">{{ index + 249 }}</div>
                                                         <div v-else class="grey darken-1 white--text text-xs-center">{{ index + 249 }}</div>
                                                     </v-flex>
@@ -257,6 +259,7 @@
 
 <script>
     import drawer from '../../drawer'
+    import loader from '../../loader'
     import { mapGetters } from 'vuex'
 
     export default {
@@ -271,11 +274,13 @@
             }
         },
         components: {
-            drawer
+            drawer,
+            loader
         },
         computed: {
             ...mapGetters([
-                'single_total_status'
+                'single_total_status',
+                'loading'
             ]),
             product () {
                 return this.single_total_status

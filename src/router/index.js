@@ -39,9 +39,10 @@ export default new Router({
         beforeEnter: AuthGuard
     },
     {
-        path: '/dashboard/products/alarm/alarmHistory',
+        path: '/dashboard/products/alarm/alarmHistory/:product_id',
         name: 'alarmHistory',
         component: alarmHistory,
+        props: true,
         beforeEnter: AuthGuard
     }
   ],

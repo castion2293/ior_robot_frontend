@@ -9,7 +9,9 @@ export default {
             SERVO: '',
             DIN_249_264: [''],
             DOUT_249_264: ['']
-        }
+        },
+        alarms : null,
+        alarm: null
     },
     getters: {
         all_su_status (state) {
@@ -23,6 +25,12 @@ export default {
         },
         single_total_status (state) {
             return state.single_total_status
+        },
+        alarms (state) {
+            return state.alarms
+        },
+        alarm (state) {
+            return state.alarm
         }
     },
     mutations: {
@@ -37,16 +45,26 @@ export default {
         },
         setSingleTotalStatue (state, payload) {
             state.single_total_status = payload
+        },
+        setAlarms (state, payload) {
+            state.alarms = payload
+        },
+        setAlarm (state, payload) {
+            state.alarm = payload
         }
     },
     actions: {
         getAllSUStatus ({commit}) {
+            commit('setLoading', true)
+
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
             axios.get('http://localhost:8000/api/status')
                 .then(response => {
                     commit('setAllSUStatus', response.data.data.items)
+
+                    commit('setLoading', false)
                 })
                 .catch(error => {
                     console.log(error)
@@ -77,12 +95,32 @@ export default {
                 })
         },
         getSingleTotalStatus ({commit}, payload) {
+            commit('setLoading', true)
+
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
             axios.get(`http://localhost:8000/api/total_status/${payload}`)
                 .then(response => {
                     commit('setSingleTotalStatue', response.data.data.items)
+
+                    commit('setLoading', false)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getAlarms ({commit}, payload) {
+            commit('setLoading', true)
+
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`http://localhost:8000/api/alarm?product_id=${payload}`)
+                .then(response => {
+                    commit('setAlarms', response.data.data.items)
+
+                    commit('setLoading', false)
                 })
                 .catch(error => {
                     console.log(error)

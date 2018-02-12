@@ -1,5 +1,7 @@
 <template>
     <v-app>
+        <loader v-if="loading"></loader>
+        
         <v-container
                 fluid
                 style="min-height: 0;"
@@ -379,6 +381,7 @@
 
 <script>
     import drawer from '../../drawer'
+    import loader from '../../loader'
     import { mapGetters } from 'vuex'
 
     export default {
@@ -390,12 +393,14 @@
             }
         },
         components: {
-            drawer
+            drawer,
+            loader
         },
         computed: {
             ...mapGetters([
                 'single_su_status',
-                'single_total_status'
+                'single_total_status',
+                'loading'
             ]),
             product () {
                 return {

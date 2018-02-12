@@ -23,6 +23,7 @@ export default {
         signUserIn ({commit}, payload) {
             axios.post(host + '/login', payload)
                 .then(response => {
+                    console.log(response)
                     let user = response.data
 
                     commit('setUser', user)
@@ -35,7 +36,9 @@ export default {
                     router.push('/dashboard')
                 })
                 .catch(error => {
-                    console.log(error)
+                    //console.log(error.response.data.error)
+
+                    commit('setError', error.response.data.error)
                 })
         },
         signUserOut ({commit}) {
