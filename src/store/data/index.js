@@ -11,7 +11,9 @@ export default {
             DOUT_249_264: ['']
         },
         alarms : null,
-        alarm: null
+        alarm: {
+            description: ''
+        }
     },
     getters: {
         all_su_status (state) {
@@ -48,6 +50,7 @@ export default {
         },
         setAlarms (state, payload) {
             state.alarms = payload
+            console.log(state.alarms)
         },
         setAlarm (state, payload) {
             state.alarm = payload
@@ -119,6 +122,22 @@ export default {
             axios.get(`http://localhost:8000/api/alarm?product_id=${payload}`)
                 .then(response => {
                     commit('setAlarms', response.data.data.items)
+
+                    commit('setLoading', false)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getAlarm ({commit}, payload) {
+            commit('setLoading', true)
+
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`http://localhost:8000/api/alarm/${payload.id}?code=${payload.code}`)
+                .then(response => {
+                    commit('setAlarm', response.data.data.items)
 
                     commit('setLoading', false)
                 })

@@ -7,6 +7,7 @@ import dashboard from '../components/products/dashboard'
 import runStatus from '../components/products/status/runStatus'
 import ioStatus from '../components/products/status/ioStatus'
 import alarmHistory from '../components/products/alarms/alarmHistory'
+import alarmDetailed from '../components/products/alarms/alarmDetailed'
 
 Vue.use(Router)
 
@@ -42,6 +43,13 @@ export default new Router({
         path: '/dashboard/products/alarm/alarmHistory/:product_id',
         name: 'alarmHistory',
         component: alarmHistory,
+        props: true,
+        beforeEnter: AuthGuard
+    },
+    {
+        path: '/dashboard/products/alarm/alarmDetailed/:id/:code',
+        name: 'alarmDetailed',
+        component: alarmDetailed,
         props: true,
         beforeEnter: AuthGuard
     }

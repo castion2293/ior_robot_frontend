@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <loader v-if="loading"></loader>
-        
+
         <v-container
                 fluid
                 style="min-height: 0;"
