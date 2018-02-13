@@ -5,7 +5,8 @@ import Guest from './guest'
 import index from '../components/index'
 import dashboard from '../components/products/dashboard'
 import runStatus from '../components/products/status/runStatus'
-import ioStatus from '../components/products/status/ioStatus'
+import totalioStatus from '../components/products/status/totalioStatus'
+import systemioStatus from '../components/products/status/systemioStatus'
 import alarmHistory from '../components/products/alarms/alarmHistory'
 import alarmDetailed from '../components/products/alarms/alarmDetailed'
 
@@ -33,11 +34,18 @@ export default new Router({
         beforeEnter: AuthGuard
     },
     {
-        path: '/dashboard/products/status/ioStatus/:product_id',
-        name: 'ioStatus',
-        component: ioStatus,
+        path: '/dashboard/products/status/totalioStatus/:product_id',
+        name: 'totalioStatus',
+        component: totalioStatus,
         props: true,
         beforeEnter: AuthGuard
+    },
+    {
+      path: '/dashboard/products/status/systemioStatus/:product_id',
+      name: 'systemioStatus',
+      component: systemioStatus,
+      props: true,
+      beforeEnter: AuthGuard
     },
     {
         path: '/dashboard/products/alarm/alarmHistory/:product_id',

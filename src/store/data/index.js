@@ -7,7 +7,9 @@ export default {
         },
         single_total_status: {
             SERVO: '',
+            DIN_201_216: [''],
             DIN_249_264: [''],
+            DOUT_201_216: [''],
             DOUT_249_264: ['']
         },
         alarms : null,
