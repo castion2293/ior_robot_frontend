@@ -23,7 +23,7 @@
                             autocomplete
                             append-icon="playlist_play"
                             hide-details
-                            @input="changeProduct(drawer_product.name)"
+                            @input="changeProduct(drawer_product.name, drawer_product.product_id)"
                     >
                         <template slot="selection" slot-scope="data">
                             <v-chip
@@ -76,17 +76,17 @@
                     </v-list-tile>
                     <v-list-tile ripple @click="" :to="`/dashboard/products/status/runStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>運轉狀態</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="" :to="`/dashboard/products/status/ioStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>I/O狀態</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>I/O狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>稼動率</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>稼動率</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list-group>
@@ -105,12 +105,12 @@
                     </v-list-tile>
                     <v-list-tile ripple @click="" :to="`/dashboard/products/alarm/alarmHistory/${drawer_product.product_id}`">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>異常列表</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>異常列表</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>異常圖表</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>異常圖表</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list-group>
@@ -157,22 +157,22 @@
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>基本設定</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>基本設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>產品設定</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>產品設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>警報設定</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile ripple @click="">
                         <v-list-tile-content>
-                            <v-list-tile-title><b>喜好設定</b></v-list-tile-title>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list-group>
@@ -246,8 +246,10 @@
             ...mapActions([
                 'reloadDrawerProducts',
             ]),
-            changeProduct (product_name) {
+            changeProduct (product_name, product_id) {
                 this.reloadDrawerProducts(product_name)
+
+                this.$router.push(`/dashboard/products/status/runStatus/${product_id}`)
             },
         }
     }

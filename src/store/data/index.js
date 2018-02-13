@@ -50,7 +50,6 @@ export default {
         },
         setAlarms (state, payload) {
             state.alarms = payload
-            console.log(state.alarms)
         },
         setAlarm (state, payload) {
             state.alarm = payload
