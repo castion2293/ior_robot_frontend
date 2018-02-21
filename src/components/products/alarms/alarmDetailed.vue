@@ -80,7 +80,10 @@
             },
             remarks () {
                 return '備註: ' + this.alarm.remarks
-            }
+            },
+            // e1 () {
+            //   return this.description
+            // }
         },
         mounted () {
             let payload = {
@@ -89,6 +92,8 @@
             }
 
             this.$store.dispatch('getAlarm', payload)
+
+            this.e1 = '選擇內容、原因及對策'
         }
     }
 </script>

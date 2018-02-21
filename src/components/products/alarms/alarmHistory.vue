@@ -2,6 +2,8 @@
     <v-app>
         <loader v-if="loading"></loader>
 
+      <!--<h1>{{ items }}</h1>-->
+
         <v-container
                 fluid
                 style="min-height: 0;"
@@ -36,7 +38,7 @@
                         v-bind:items="items"
                         v-bind:search="search"
                         v-model="selected"
-                        item-key="name"
+                        item-key="id"
                         select-all
                         class="elevation-1"
                 >
@@ -60,7 +62,7 @@
                             ></v-checkbox>
                         </td>
                         <td style="cursor:pointer;" @click="alarmDetailed(props.item.id, props.item.code)">
-                            {{ props.item.name }}
+                            {{ props.item.my_name }}
                         </td>
                         <td class="text-xs-right">{{ props.item.code }}</td>
                         <td class="text-xs-right">{{ props.item.date.toLocaleDateString() }}</td>
@@ -94,33 +96,40 @@
                 selected: [],
                 headers: [
                     {
-                        text: 'AlARM NUMBER',
+                        text: 'AlARM NAME',
                         align: 'left',
                         sortable: false,
-                        value: 'id'
-                    },
-                    { text: 'AlARM NAME', value: 'name' },
-                    { text: 'ALARM CODE', value: 'code' },
-                    { text: 'ALARM DATE', value: 'date' },
-                    { text: 'ALARM TIME', sortable: false, value: 'time' },
 
+                    },
+                    { text: 'AlARM CODE'},
+                    { text: 'ALARM DATE'},
+                    { text: 'ALARM TIME'},
+                    { text: 'ALARM ID'},
                 ],
                 // items: [
                 //     {
                 //         value: false,
-                //         name: 'Emergency Stop SW ON',
-                //         code: '008-014',
-                //         date: new Date('2018-01-29'),
+                //         id: '88274',
+                //         code: '008-016',
+                //         date: new Date('2018-02-29'),
                 //         time: '14:14:30',
-                //         id: '88273'
+                //         my_name: 'emergency1'
                 //     },
                 //     {
                 //         value: false,
-                //         name: 'Emergency',
-                //         code: '008-015',
-                //         date: new Date('2018-02-29'),
+                //         id: '88273',
+                //         code: '008-014',
+                //         date: new Date('2018-01-29'),
                 //         time: '14:14:30',
-                //         id: '88273'
+                //         my_name: 'emergency2'
+                //     },
+                //     {
+                //         value: false,
+                //         id: '88275',
+                //         code: '008-015',
+                //         date: new Date('2018-02-14'),
+                //         time: '14:14:33',
+                //         my_name: 'emergency1'
                 //     },
                 // ]
             }
@@ -132,10 +141,10 @@
 
             ]),
             items () {
-                return _.map(this.alarms, alarm =>{
+                return  _.map(this.alarms, alarm =>{
                     return {
                         value: false,
-                        name: alarm.ALARM_NAME,
+                        my_name: alarm.ALARM_NAME,
                         code: alarm.ALARM_CODE,
                         date: new Date(alarm.ALARM_DATE),
                         time: alarm.ALARM_TIME,

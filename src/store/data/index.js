@@ -64,7 +64,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get('http://localhost:8000/api/status')
+            axios.get(host + '/status')
                 .then(response => {
                     commit('setAllSUStatus', response.data.data.items)
 
@@ -78,7 +78,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get('http://localhost:8000/api/total_status')
+            axios.get(host + '/total_status')
                 .then(response => {
                     commit('setAllTotalStatus', response.data.data.items)
                 })
@@ -90,7 +90,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get(`http://localhost:8000/api/status/${payload}`)
+            axios.get(`${host}/status/${payload}`)
                 .then(response => {
                     commit('setSingleSUStatue', response.data.data.items)
                 })
@@ -104,7 +104,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get(`http://localhost:8000/api/total_status/${payload}`)
+            axios.get(`${host}/total_status/${payload}`)
                 .then(response => {
                     commit('setSingleTotalStatue', response.data.data.items)
 
@@ -120,7 +120,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get(`http://localhost:8000/api/alarm?product_id=${payload}`)
+            axios.get(`${host}/alarm?product_id=${payload}`)
                 .then(response => {
                     commit('setAlarms', response.data.data.items)
 
@@ -136,7 +136,7 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get(`http://localhost:8000/api/alarm/${payload.id}?code=${payload.code}`)
+            axios.get(`${host}/alarm/${payload.id}?code=${payload.code}`)
                 .then(response => {
                     commit('setAlarm', response.data.data.items)
 
