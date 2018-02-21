@@ -59,7 +59,7 @@ export default {
     },
     actions: {
         getAllSUStatus ({commit}) {
-            commit('setLoading', true)
+            // commit('setLoading', true)
 
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
@@ -99,7 +99,7 @@ export default {
                 })
         },
         getSingleTotalStatus ({commit}, payload) {
-            commit('setLoading', true)
+            // commit('setLoading', true)
 
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
@@ -108,6 +108,7 @@ export default {
                 .then(response => {
                     commit('setSingleTotalStatue', response.data.data.items)
 
+                    //close loader
                     commit('setLoading', false)
                 })
                 .catch(error => {
