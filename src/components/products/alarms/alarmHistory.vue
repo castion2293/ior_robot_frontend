@@ -15,18 +15,27 @@
                 </v-card-title>
             </v-card>
             <v-card class="white">
+                <!--<v-card-title>-->
+                    <!--<v-layout row wrap>-->
+                        <!--<v-flex xs12 sm6 md3 offset-md9>-->
+                            <!--<v-text-field-->
+                                    <!--append-icon="search"-->
+                                    <!--label="Search"-->
+                                    <!--single-line-->
+                                    <!--hide-details-->
+                                    <!--v-model="search"-->
+                            <!--&gt;</v-text-field>-->
+                        <!--</v-flex>-->
+                    <!--</v-layout>-->
+                <!--</v-card-title>-->
                 <v-card-title>
-                    <v-layout row wrap>
-                        <v-flex xs12 sm6 md3 offset-md9>
-                            <v-text-field
-                                    append-icon="search"
-                                    label="Search"
-                                    single-line
-                                    hide-details
-                                    v-model="search"
-                            ></v-text-field>
-                        </v-flex>
-                    </v-layout>
+                  <v-layout row wrap>
+                    <v-flex xs12 sm6 md3 offset-md10>
+                      <v-btn color="primary" @click="(myOrder === 'desc') ? myOrder = 'asc' : myOrder = 'desc'">
+                        <strong>排序: {{ (myOrder === 'desc') ? '最久~最近' : '最近~最久' }}</strong>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
                 </v-card-title>
                 <v-container
                         fluid
@@ -101,11 +110,12 @@
                         sortable: false,
 
                     },
-                    { text: 'AlARM CODE'},
-                    { text: 'ALARM DATE'},
-                    { text: 'ALARM TIME'},
-                    { text: 'ALARM ID'},
+                    { text: 'AlARM CODE', sortable: false },
+                    { text: 'ALARM DATE', sortable: false },
+                    { text: 'ALARM TIME', sortable: false },
+                    { text: 'ALARM ID', sortable: false },
                 ],
+                myOrder: 'desc',
                 // items: [
                 //     {
                 //         value: false,
@@ -141,16 +151,18 @@
 
             ]),
             items () {
-                return  _.map(this.alarms, alarm =>{
-                    return {
-                        value: false,
-                        my_name: alarm.ALARM_NAME,
-                        code: alarm.ALARM_CODE,
-                        date: new Date(alarm.ALARM_DATE),
-                        time: alarm.ALARM_TIME,
-                        id: alarm.id
-                    }
-                })
+              let alarm_group =  _.map(this.alarms, alarm =>{
+                return {
+                  value: false,
+                  my_name: alarm.ALARM_NAME,
+                  code: alarm.ALARM_CODE,
+                  date: new Date(alarm.ALARM_DATE),
+                  time: alarm.ALARM_TIME,
+                  id: alarm.id
+                }
+              })
+
+              return this.order(alarm_group)
             }
         },
         mounted () {
@@ -159,6 +171,13 @@
         methods: {
             alarmDetailed (id, code) {
                 this.$router.push(`/dashboard/products/alarm/alarmDetailed/${id}/${code}`)
+            },
+            order (group) {
+                if (this.myOrder === 'desc') {
+                  return _.orderBy(group, ['date', 'time'], ['desc', 'desc'])
+                }
+                return _.orderBy(group, ['date', 'time'], ['asc', 'asc'])
+
             }
         }
     }
