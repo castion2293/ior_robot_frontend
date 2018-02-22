@@ -2,7 +2,8 @@ export default {
     state: {
         dates: [],
         numbers: [],
-        alarms : null,
+        code_names: [],
+        code_numbers: [],
     },
     getters: {
         dates (state) {
@@ -10,6 +11,12 @@ export default {
         },
         numbers (state) {
             return state.numbers
+        },
+        code_names (state) {
+            return state.code_names
+        },
+        code_numbers (state) {
+            return state.code_numbers
         }
     },
     mutations: {
@@ -18,6 +25,12 @@ export default {
         },
         setNumbers (state, payload) {
             state.numbers = payload
+        },
+        setCodeNames (state, payload) {
+            state.code_names = payload
+        },
+        setCodeNumbers (state, payload) {
+            state.code_numbers = payload
         }
     },
     actions: {
@@ -28,6 +41,9 @@ export default {
             axios.get(`${host}/alarm?product_id=${payload}`)
             .then(response => {
                 this.dispatch('settingNumbers', response.data.data.items)
+                this.dispatch('settingDates', new Date())
+                this.dispatch('settingCodeNumbers', response.data.data.items)
+                this.dispatch('settingCodeName', response.data.data.items)
             })
             .catch(error => {
                 console.log(error)
@@ -50,9 +66,6 @@ export default {
                 let count = 0
 
                 _.find(alarmDates, alarmDate => {
-                    //(alarmDate.replace(new RegExp('-', 'g'), '/') === datesArray) ? count++ : count = count
-                    // console.log(alarmDate.replace(new RegExp('-', 'g'), '/'))
-
                     (new Date(alarmDate).getDate() === dateArray.getDate()) ? count++ : count = count
                 })
 
@@ -70,6 +83,32 @@ export default {
 
             commit('setDates', datesArray)
         },
+        settingCodeNumbers ({commit}, payload) {
+            let alarmNames = _.uniq(_.map(payload, alarm => {
+                return alarm.ALARM_NAME
+            }))
+
+            let numbers = []
+
+            _.forEach(alarmNames, alarmName => {
+                let count = 0
+
+                _.find(payload, alarm => {
+                    (alarmName === alarm.ALARM_NAME) ? count++ : count = count
+                })
+
+                numbers.push(count)
+            })
+
+            commit('setCodeNumbers', numbers)
+        },
+        settingCodeName ({commit}, payload) {
+            let alarmCodes = _.uniq(_.map(payload, alarm => {
+                return alarm.ALARM_NAME
+            }))
+
+            commit('setCodeNames', alarmCodes)
+        }
 
     }
 }

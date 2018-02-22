@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <canvas ref="canvas"></canvas>
+    <section class="pt-2 pb-2">
+        <canvas ref="canvas" height="75"></canvas>
     </section>
 </template>
 
@@ -46,10 +46,12 @@
         },
         mounted () {
             this.$store.dispatch('alarmChatSetting', this.product_id)
-            this.$store.dispatch('settingDates', new Date())
+
+            this.$store.dispatch('takeLoading', true)
 
             setTimeout(() => {
                 this.fetchData()
+                this.$store.dispatch('takeLoading', false)
             }, 2000)
 
         },
@@ -59,10 +61,7 @@
                 this.config.data.datasets[0].data = this.numbers
 
                 let ctx = this.$refs.canvas
-                ctx.height = 100
                 this.myChart = new Chart(ctx, this.config)
-
-                console.log(this.numbers)
             },
         }
     }
