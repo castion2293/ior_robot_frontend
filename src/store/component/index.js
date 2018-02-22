@@ -43,20 +43,20 @@ export default {
             })
 
             let groups = _.uniq(_.map(payload, product => {
-                return {
-                    group: product.group,
-                }
+                return product.group
             }))
 
             let elem = null
 
-            groups.map(group => {
-                elem = _.concat(elem, {header: group.group})
-                let foo = products.find(product => {
-                    return product.group === group.group
+            _.forEach(groups, group => {
+                elem = _.concat(elem, {header: group})
+
+                _.find(products, product => {
+                    if (product.group === group) {
+                        elem = _.concat(elem, product)
+                    }
                 })
 
-                elem = _.concat(elem, foo)
                 elem = _.concat(elem, { divider: true })
             })
 
