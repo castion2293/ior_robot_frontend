@@ -280,13 +280,14 @@
           }
         },
         mounted () {
+          this.$store.dispatch('takeLoading', true)
+
           this.$store.dispatch('getSingleTotalStatus', this.product_id)
 
-          // this.myTimer = setInterval(
-          //     function() {
-          //         this.$store.dispatch('getSingleSUStatue', this.product_id)
-          //         this.$store.dispatch('getSingleTotalStatus', this.product_id)
-          //     }.bind(this), 2000)
+          this.myTimer = setInterval(
+              function() {
+                  this.$store.dispatch('getSingleTotalStatus', this.product_id)
+              }.bind(this), 2000)
         },
         beforeDestroy () {
           clearInterval(this.myTimer)

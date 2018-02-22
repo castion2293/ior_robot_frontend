@@ -8,6 +8,7 @@ import 'vuetify/dist/vuetify.min.css'
 import axios from 'axios'
 import { store } from './store'
 import lodash from 'lodash'
+import Chart from 'chart.js'
 
 window.axios = axios;
 

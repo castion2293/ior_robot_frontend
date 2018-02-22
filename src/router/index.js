@@ -9,6 +9,7 @@ import totalioStatus from '../components/products/status/totalioStatus'
 import systemioStatus from '../components/products/status/systemioStatus'
 import alarmHistory from '../components/products/alarms/alarmHistory'
 import alarmDetailed from '../components/products/alarms/alarmDetailed'
+import alarmCharts from '../components/products/alarms/alarmCharts'
 
 Vue.use(Router)
 
@@ -58,6 +59,13 @@ export default new Router({
         path: '/dashboard/products/alarm/alarmDetailed/:id/:code',
         name: 'alarmDetailed',
         component: alarmDetailed,
+        props: true,
+        beforeEnter: AuthGuard
+    },
+    {
+        path: '/dashboard/products/alarm/alarmCharts/:product_id',
+        name: 'alarmCharts',
+        component: alarmCharts,
         props: true,
         beforeEnter: AuthGuard
     }

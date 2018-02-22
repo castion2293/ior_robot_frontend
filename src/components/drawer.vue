@@ -74,22 +74,22 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="" :to="`/dashboard/products/status/runStatus/${drawer_product.product_id}`">
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/runStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="" :to="`/dashboard/products/status/totalioStatus/${drawer_product.product_id}`">
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/totalioStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>綜合I/O狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                  <v-list-tile ripple @click="" :to="`/dashboard/products/status/systemioStatus/${drawer_product.product_id}`">
+                  <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/systemioStatus/${drawer_product.product_id}`">
                     <v-list-tile-content>
                       <v-list-tile-title class="grey--text text--darken-1"><b>系統I/O狀態</b></v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>稼動率</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -108,12 +108,12 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="" :to="`/dashboard/products/alarm/alarmHistory/${drawer_product.product_id}`">
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/alarm/alarmHistory/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>異常列表</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/alarm/alarmCharts/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>異常圖表</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -160,22 +160,22 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>基本設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>產品設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="">
+                    <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>
@@ -250,12 +250,16 @@
         methods: {
             ...mapActions([
                 'reloadDrawerProducts',
+                'closeDrawer'
             ]),
             changeProduct (product_name, product_id) {
                 this.reloadDrawerProducts(product_name)
 
                 this.$router.push(`/dashboard/products/status/runStatus/${product_id}`)
             },
+            closingDrawer () {
+                this.closeDrawer(false)
+            }
         }
     }
 </script>

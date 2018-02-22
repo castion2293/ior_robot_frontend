@@ -25,6 +25,9 @@ export default {
         toggleDrawer (state) {
             state.drawer = !state.drawer
         },
+        setDrawer (state, payload) {
+            state.drawer = payload
+        },
         toggleminiVariant (state) {
             state.miniVariant = !state.miniVariant
         },
@@ -94,6 +97,9 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        closeDrawer ({commit}, payload) {
+            commit('setDrawer', payload)
         }
     }
 }

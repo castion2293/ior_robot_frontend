@@ -2,8 +2,6 @@
     <v-app>
         <loader v-if="loading"></loader>
 
-      <!--<h1>{{ items }}</h1>-->
-
         <v-container
                 fluid
                 style="min-height: 0;"
@@ -148,7 +146,6 @@
             ...mapGetters([
                 'alarms',
                 'loading',
-
             ]),
             items () {
               let alarm_group =  _.map(this.alarms, alarm =>{

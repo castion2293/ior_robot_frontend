@@ -4,6 +4,7 @@ import user from './user'
 import component from './component'
 import data from './data'
 import shared from './shared'
+import chart from './chart'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export const store = new Vuex.Store({
         user: user,
         component: component,
         data: data,
-        shared: shared
+        shared: shared,
+        chart: chart,
     }
 })
