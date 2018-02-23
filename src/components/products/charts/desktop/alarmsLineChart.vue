@@ -53,7 +53,6 @@
                 this.fetchData()
                 this.$store.dispatch('takeLoading', false)
             }, 2000)
-
         },
         methods: {
             fetchData () {

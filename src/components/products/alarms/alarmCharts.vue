@@ -15,7 +15,8 @@
                                 <div class="headline"><strong>警報趨勢圖</strong></div>
                             </v-card-title>
                         </v-card>
-                        <alarmsLineChart :product_id="this.product_id"></alarmsLineChart>
+                        <alarmsLineChart :product_id="this.product_id" class="hidden-xs-only"></alarmsLineChart>
+                        <alarms-line-chart-mobile class="hidden-sm-and-up"></alarms-line-chart-mobile>
                     </v-card>
                 </v-flex>
 
@@ -26,7 +27,8 @@
                                 <div class="headline"><strong>個別警報</strong></div>
                             </v-card-title>
                         </v-card>
-                        <alarmsBarChart></alarmsBarChart>
+                        <alarmsBarChart class="hidden-xs-only"></alarmsBarChart>
+                        <alarmsBarChartMobile class="hidden-sm-and-up"></alarmsBarChartMobile>
                     </v-card>
                 </v-flex>
 
@@ -37,7 +39,8 @@
                                 <div class="headline"><strong>警報比例圖</strong></div>
                             </v-card-title>
                         </v-card>
-                        <alarmsPieChart></alarmsPieChart>
+                        <alarmsPieChart class="hidden-xs-only"></alarmsPieChart>
+                        <alarmsPieChartMobile class="hidden-sm-and-up"></alarmsPieChartMobile>
                     </v-card>
                 </v-flex>
 
@@ -52,9 +55,12 @@
     import drawer from '../../drawer'
     import loader from '../../loader'
     import { mapGetters } from 'vuex'
-    import alarmsLineChart from '../charts/alarmsLineChart'
-    import alarmsBarChart from '../charts/alarmsBarChart'
-    import alarmsPieChart from '../charts/alarmsPieChart'
+    import alarmsLineChart from '../charts/desktop/alarmsLineChart'
+    import alarmsBarChart from '../charts/desktop/alarmsBarChart'
+    import alarmsPieChart from '../charts/desktop/alarmsPieChart'
+    import alarmsLineChartMobile from '../charts/mobile/alarmsLineChartMobile'
+    import alarmsBarChartMobile from '../charts/mobile/alarmsBarChartMobile'
+    import alarmsPieChartMobile from '../charts/mobile/alarmsPieChartMobile'
 
     export default {
         name: "alarm-charts",
@@ -64,7 +70,10 @@
             loader,
             alarmsLineChart,
             alarmsBarChart,
-            alarmsPieChart
+            alarmsPieChart,
+            alarmsLineChartMobile,
+            alarmsBarChartMobile,
+            alarmsPieChartMobile
         },
         data () {
             return {
