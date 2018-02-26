@@ -6,7 +6,8 @@ export default {
             name: '',
             email: '',
             photo: '',
-            token: ''
+            token: '',
+            token_name: ''
         },
     },
     getters: {
@@ -32,6 +33,7 @@ export default {
                     localStorage.setItem('name', user.name)
                     localStorage.setItem('email', user.email)
                     localStorage.setItem('photo', user.photo)
+                    localStorage.setItem('token_name', user.token_name)
 
                     router.push('/dashboard')
                 })
@@ -45,19 +47,21 @@ export default {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
-            axios.get(host + '/logout')
+            axios.post(host + '/logout', {token_name: localStorage.getItem('token_name')})
                 .then(response => {
 
                     localStorage.removeItem('token')
                     localStorage.removeItem('name')
                     localStorage.removeItem('email')
                     localStorage.removeItem('photo')
+                    localStorage.removeItem('token_name')
 
                     let user = {
                         name: '',
                         email: '',
                         photo: '',
-                        token: ''
+                        token: '',
+                        token_name: '',
                     }
 
                     commit('setUser', user)
