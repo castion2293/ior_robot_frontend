@@ -67,9 +67,11 @@
         methods: {
             ...mapActions([
                 'reloadDrawerProducts',
+                'closeDrawer',
             ]),
             selectProduct (product) {
                 this.reloadDrawerProducts(product.name)
+                this.closeDrawer(false)
             }
         },
         mounted () {

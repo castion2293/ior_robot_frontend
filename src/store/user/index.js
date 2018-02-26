@@ -66,6 +66,13 @@ export default {
 
                     commit('setUser', user)
 
+                    let products = {
+                        name: ''
+                    }
+
+                    commit('setDrawerProducts', products)
+                    commit('setDrawerProduct', products)
+
                     router.push('/')
                 })
                 .catch(error => {

@@ -82,7 +82,7 @@ export default {
                     commit('setDrawerProduct')
                 })
                 .catch(error => {
-                    console.log(error)
+                    commit('setError', error.response.data.error)
                 })
         },
         reloadDrawerProducts ({commit}, payload) {
