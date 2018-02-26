@@ -7,10 +7,17 @@ export default {
         },
         single_total_status: {
             SERVO: '',
+            DIN_1_16: [''],
             DIN_201_216: [''],
             DIN_249_264: [''],
+            DOUT_1_16: [''],
             DOUT_201_216: [''],
             DOUT_249_264: ['']
+        },
+        coordinate: {
+            JOINT: [''],
+            WORLD: [''],
+            WORK: ['']
         },
         alarms : null,
         alarm: {
@@ -29,6 +36,9 @@ export default {
         },
         single_total_status (state) {
             return state.single_total_status
+        },
+        coordinate (state) {
+            return state.coordinate
         },
         alarms (state) {
             return state.alarms
@@ -49,6 +59,9 @@ export default {
         },
         setSingleTotalStatue (state, payload) {
             state.single_total_status = payload
+        },
+        setCoordinate (state, payload) {
+            state.coordinate = payload
         },
         setAlarms (state, payload) {
             state.alarms = payload
@@ -114,6 +127,21 @@ export default {
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        getCoordinate ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`${host}/coordinate/${payload}`)
+            .then(response => {
+                commit('setCoordinate', response.data.data.items)
+
+                //close loader
+                commit('setLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         },
         getAlarms ({commit}, payload) {
             commit('setLoading', true)

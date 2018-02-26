@@ -28,10 +28,15 @@
                 <!--</v-card-title>-->
                 <v-card-title>
                   <v-layout row wrap>
-                    <v-flex xs12 sm6 md3 offset-md10>
-                      <v-btn color="primary" @click="(myOrder === 'desc') ? myOrder = 'asc' : myOrder = 'desc'">
-                        <strong>排序: {{ (myOrder === 'desc') ? '最久~最近' : '最近~最久' }}</strong>
-                      </v-btn>
+                    <v-flex xs12 sm6 md3 offset-md9>
+                        <v-btn-toggle v-model="e" @click="(myOrder === 'desc') ? myOrder = 'asc' : myOrder = 'desc'">
+                            <v-btn flat value="latest">
+                                <span class="grey--text text--darken-1"><strong>排序: 最近~最久</strong></span>
+                            </v-btn>
+                            <v-btn flat value="oldest">
+                                <span class="grey--text text--darken-1"><strong>排序: 最久~最近</strong></span>
+                            </v-btn>
+                        </v-btn-toggle>
                     </v-flex>
                   </v-layout>
                 </v-card-title>
@@ -114,6 +119,7 @@
                     { text: 'ALARM ID', sortable: false },
                 ],
                 myOrder: 'desc',
+                e: 'latest'
                 // items: [
                 //     {
                 //         value: false,
