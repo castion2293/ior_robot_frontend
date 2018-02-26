@@ -35,7 +35,15 @@ export default {
                     localStorage.setItem('photo', user.photo)
                     localStorage.setItem('token_name', user.token_name)
 
-                    router.push('/dashboard')
+                    // check is there any original url
+                    let path = localStorage.getItem('original_url')
+
+                    if (path !== undefined && path !== null) {
+                        localStorage.removeItem('original_url')
+                        router.push(path)
+                    } else {
+                        router.push('dashboard')
+                    }
                 })
                 .catch(error => {
                     //console.log(error.response.data.error)
