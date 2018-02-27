@@ -29,11 +29,11 @@
                 <v-card-title>
                   <v-layout row wrap>
                     <v-flex xs12 sm6 md3 offset-md9>
-                        <v-btn-toggle v-model="e" @click="(myOrder === 'desc') ? myOrder = 'asc' : myOrder = 'desc'">
-                            <v-btn flat value="latest">
+                        <v-btn-toggle v-model="e">
+                            <v-btn flat value="latest" @click="myOrder = 'desc'">
                                 <span class="grey--text text--darken-1"><strong>排序: 最近~最久</strong></span>
                             </v-btn>
-                            <v-btn flat value="oldest">
+                            <v-btn flat value="oldest" @click="myOrder = 'asc'">
                                 <span class="grey--text text--darken-1"><strong>排序: 最久~最近</strong></span>
                             </v-btn>
                         </v-btn-toggle>
