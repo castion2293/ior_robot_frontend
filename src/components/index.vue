@@ -3,13 +3,18 @@
     <section>
       <div class="bgimg-1">
         <div class="bg-title-1 text-xs-center">
-          <h1 class="white--text mb-3 text-xs-center display-2"><b>羅博特科技雲端服務平台</b></h1>
-          <h1 class="white--text mb-3 text-xs-center headline">邁向工業4.0的好幫手</h1>
+            <h1 class="white--text mb-3 text-xs-center display-2 hidden-xs-only"><b>羅博特科技雲端服務平台</b></h1>
+            <h1 class="white--text mb-5 text-xs-center display-2 hidden-sm-and-up">
+                <div class="display-1">羅博特科技</div>
+                <div class="display-1">雲端服務平台</div>
+            </h1>
+
+            <h1 class="white--text mb-3 text-xs-center headline">邁向工業4.0的好幫手</h1>
           <v-btn
                   class="blue lighten-2 mt-5"
                   dark
                   large
-                  href="/pre-made-themes"
+                  href=""
           >
             聯絡我們
           </v-btn>
@@ -41,9 +46,7 @@
                     <div class="headline text-xs-center"><strong>雲端資料收集</strong></div>
                   </v-card-title>
                   <v-card-text>
-                    Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                    Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
+                    資料即時上傳雲端，並儲存至雲端資料庫，方便做大數據管理及分析，本系統是建立在亞馬遜雲端服務，資料安全又有保障
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -56,9 +59,7 @@
                     <div class="headline"><strong>警報即時通知</strong></div>
                   </v-card-title>
                   <v-card-text>
-                    Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                    Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
+                    遠端監控，出現異常訊號都會立即上傳雲端，異常訊號會建立成列表，方便日後做查詢與分析，系統也有提供異常排除的建議方式
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -71,12 +72,11 @@
                     <div class="headline text-xs-center"><strong>遠端維修服務</strong></div>
                   </v-card-title>
                   <v-card-text>
-                    Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                    Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
+                    雲端監控，任何的資料訊號皆可在本地端使用瀏覽器做確認，工程師不須每次都要到現場才可以做故障排除，大大地省下時間及出差成本
                   </v-card-text>
                 </v-card>
               </v-flex>
+
             </v-layout>
           </v-container>
         </v-flex>
@@ -87,70 +87,83 @@
       <div class="bgimg-2">
         <div class="bg-title-2 text-xs-center hidden-xs-only" style="margin-top:15%;">
           <h1 class="white--text mb-3 text-xs-center display-1"><b>自動化的領導品牌</b></h1>
-          <h1 class="white--text mb-3 text-xs-center headline">機械連網 跟上時代</h1>
+          <h1 class="white--text mb-3 text-xs-center headline">機械聯網 跟上時代</h1>
         </div>
 
         <div class="bg-title-2 text-xs-center hidden-sm-and-up" style="margin-top:50%;">
           <h1 class="white--text mb-3 text-xs-center display-1"><b>自動化的領導品牌</b></h1>
-          <h1 class="white--text mb-3 text-xs-center headline">機械連網 跟上時代</h1>
+          <h1 class="white--text mb-3 text-xs-center headline">機械聯網 跟上時代</h1>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="hidden-sm-and-down">
       <v-container grid-list-xl>
-        <v-layout row wrap justify-center class="my-5">
-          <v-flex xs12 sm4>
+        <v-layout row wrap class="my-5">
+          <v-flex xs12 sm12 md7>
             <v-card class="elevation-0 transparent">
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline">Company info</div>
+              <v-card-title primary-title class="layout grey--text text--darken-3 pl-5">
+                  <div class="headline"><strong>公司簡介</strong></div>
               </v-card-title>
-              <v-card-text>
-                Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
+              <v-card-text class="grey--text text--darken-3 pl-5 pr-5">
+                  羅博特科技為日本．東芝機械（TOSHIBA MACHINE）機械手臂（水平／垂直多關節機械手臂）－台灣總代理、日本．IAI直交式機械手臂專業代理；以完整的產品陣容（視覺系統Data Logic、軟體授權管理OptiLIC...etc），滿足客戶對自動化的一次性需求，提供系統規劃與整合的服務，更可對產業的縱深與輪廓能更清楚的掌握，產業自動化為未來必定的趨勢產業，越早加入越快上手，在變動如此快速的競爭環境中，可以確定的是，投身產業自動化領域，絕對會是最佳的個人投資，歡迎業界老鳥新兵踴躍加入，共創下一輪產業的驕傲。
+                  <div class="ml-4 mt-2">
+                      <ul>
+                          <li>代理銷售自動化相關產品</li>
+                          <li>日本 TOSHIBA MACHINE 東芝機械 水平／垂直多關節機械手臂</li>
+                          <li>日本 IAI 清水機電 直交式機械手臂</li>
+                          <li>軟體授權管理OptiLIC</li>
+                      </ul>
+                  </div>
               </v-card-text>
             </v-card>
           </v-flex>
-          <v-flex xs12 sm4 offset-sm1>
+          <v-flex xs12 sm12 md5>
             <v-card class="elevation-0 transparent">
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline">Contact us</div>
+              <v-card-title primary-title class="layout grey--text text--darken-3">
+                <div class="headline"><strong>介紹影片</strong></div>
               </v-card-title>
               <v-card-text>
-                Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
+                  <iframe width="100%;" height="272" src="https://www.youtube.com/embed/qneAwpwy0Nw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               </v-card-text>
-              <v-list class="transparent">
-                <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon class="blue--text text--lighten-2">phone</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>777-867-5309</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon class="blue--text text--lighten-2">place</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>Chicago, US</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon class="blue--text text--lighten-2">email</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>john@vuetifyjs.com</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-              </v-list>
             </v-card>
           </v-flex>
         </v-layout>
       </v-container>
     </section>
+
+      <section class="hidden-md-and-up">
+          <v-layout row wrap class="my-5">
+              <v-flex xs12 sm12 md7>
+                  <v-card class="elevation-0 transparent">
+                      <v-card-title primary-title class="layout justify-center grey--text text--darken-3">
+                          <div class="headline"><strong>公司簡介</strong></div>
+                      </v-card-title>
+                      <v-card-text class="grey--text text--darken-3 pl-5 pr-5">
+                          羅博特科技為日本．東芝機械（TOSHIBA MACHINE）機械手臂（水平／垂直多關節機械手臂）－台灣總代理、日本．IAI直交式機械手臂專業代理；以完整的產品陣容（視覺系統Data Logic、軟體授權管理OptiLIC...etc），滿足客戶對自動化的一次性需求，提供系統規劃與整合的服務，更可對產業的縱深與輪廓能更清楚的掌握，產業自動化為未來必定的趨勢產業，越早加入越快上手，在變動如此快速的競爭環境中，可以確定的是，投身產業自動化領域，絕對會是最佳的個人投資，歡迎業界老鳥新兵踴躍加入，共創下一輪產業的驕傲。
+                          <div class="ml-4 mt-2">
+                              <ul>
+                                  <li>代理銷售自動化相關產品</li>
+                                  <li>日本 TOSHIBA MACHINE 東芝機械 水平／垂直多關節機械手臂</li>
+                                  <li>日本 IAI 清水機電 直交式機械手臂</li>
+                                  <li>軟體授權管理OptiLIC</li>
+                              </ul>
+                          </div>
+                      </v-card-text>
+                  </v-card>
+              </v-flex>
+              <v-flex xs12 sm12 md5>
+                  <v-card class="elevation-0 transparent">
+                      <v-card-title primary-title class="layout grey--text text--darken-3">
+                          <div class="headline"><strong>介紹影片</strong></div>
+                      </v-card-title>
+                      <v-card-text>
+                          <iframe width="100%;" height="272" src="https://www.youtube.com/embed/qneAwpwy0Nw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                      </v-card-text>
+                  </v-card>
+              </v-flex>
+          </v-layout>
+      </section>
   </div>
 </template>
 

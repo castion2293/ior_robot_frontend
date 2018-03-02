@@ -63,23 +63,23 @@
         <v-list>
             <v-list-tile v-show="!userIsAuthenticated" @click="dialog = !dialog">
                 <v-icon class="mr-3" color="blue lighten-3">exit_to_app</v-icon>
-                <v-list-tile-title class="mr-3"><strong>登入</strong></v-list-tile-title>
+                <v-list-tile-title class="mr-3 grey--text text--darken-1"><strong>登入</strong></v-list-tile-title>
             </v-list-tile>
-            <v-list-tile v-show="userIsAuthenticated" @click="">
+            <v-list-tile v-show="userIsAuthenticated" @click="" class="pt-1 pb-1">
                 <v-icon class="mr-4" color="blue lighten-3">person</v-icon>
-                <v-list-tile-title><strong>基本設定</strong></v-list-tile-title>
+                <v-list-tile-title class="grey--text text--darken-1"><strong>基本設定</strong></v-list-tile-title>
             </v-list-tile>
-            <v-list-tile v-show="userIsAuthenticated" @click="">
+            <v-list-tile v-show="userIsAuthenticated" @click="" class="pt-1 pb-1">
                 <v-icon class="mr-4" color="blue lighten-3">notifications</v-icon>
-                <v-list-tile-title><strong>警報設定</strong></v-list-tile-title>
+                <v-list-tile-title class="grey--text text--darken-1"><strong>警報設定</strong></v-list-tile-title>
             </v-list-tile>
-            <v-list-tile v-show="userIsAuthenticated" @click="">
+            <v-list-tile v-show="userIsAuthenticated" @click="" class="pt-1 pb-1">
                 <v-icon class="mr-4" color="blue lighten-3">card_giftcard</v-icon>
-                <v-list-tile-title><strong>喜好設定</strong></v-list-tile-title>
+                <v-list-tile-title class="grey--text text--darken-1"><strong>喜好設定</strong></v-list-tile-title>
             </v-list-tile>
-            <v-list-tile v-show="userIsAuthenticated" @click="logout">
+            <v-list-tile v-show="userIsAuthenticated" @click="logout" class="pt-1 pb-1">
                 <v-icon class="mr-4" color="blue lighten-3">keyboard_tab</v-icon>
-                <v-list-tile-title><strong>登出</strong></v-list-tile-title>
+                <v-list-tile-title class="grey--text text--darken-1"><strong>登出</strong></v-list-tile-title>
             </v-list-tile>
         </v-list>
       </v-menu>
@@ -87,9 +87,22 @@
 
       <v-dialog v-model="dialog" persistent max-width="500px">
         <v-card>
-          <v-card-title>
-            <span class="headline text-xs-center"><strong>使用者登入</strong></span>
-          </v-card-title>
+            <v-card-media
+                    class="white--text"
+                    height="200px"
+                    src="https://s3-ap-northeast-1.amazonaws.com/iot-robot-front-pics/web_pics/iot_model.jpg"
+            >
+                <v-container fill-height fluid>
+                    <v-layout fill-height>
+                        <v-flex xs12 align-end flexbox>
+                            <span class="headline"><strong>使用者登入</strong></span>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-card-media>
+          <!--<v-card-title>-->
+            <!--<span class="headline text-xs-center"><strong>使用者登入</strong></span>-->
+          <!--</v-card-title>-->
           <v-card-text>
             <v-container grid-list-md>
               <v-layout wrap>
@@ -104,8 +117,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="dialog = false">取消</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="login">登入</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="dialog = false"><strong>取消</strong></v-btn>
+            <v-btn color="blue darken-1" flat @click.native="login"><strong>登入</strong></v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -128,34 +141,117 @@
     <v-content>
       <router-view/>
     </v-content>
-    <!--<v-navigation-drawer-->
-      <!--temporary-->
-      <!--:right="right"-->
-      <!--v-model="rightDrawer"-->
-      <!--fixed-->
-      <!--app-->
-    <!--&gt;-->
-      <!--<v-list>-->
-        <!--<v-list-tile @click="right = !right">-->
-          <!--<v-list-tile-action>-->
-            <!--<v-icon>compare_arrows</v-icon>-->
-          <!--</v-list-tile-action>-->
-          <!--<v-list-tile-title>Switch drawer (click me)</v-list-tile-title>-->
-        <!--</v-list-tile>-->
-      <!--</v-list>-->
-    <!--</v-navigation-drawer>-->
-    <!--<v-footer :fixed="fixed" app>-->
-      <!--<v-layout row wrap align-center>-->
-        <!--<v-flex xs12>-->
-          <!--<div class="white&#45;&#45;text ml-3">-->
-            <!--Made with-->
-            <!--<v-icon class="red&#45;&#45;text">favorite</v-icon>-->
-            <!--by <a class="white&#45;&#45;text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>-->
-            <!--and <a class="white&#45;&#45;text" href="https://github.com/vwxyzjn">Costa Huang</a>-->
-          <!--</div>-->
-        <!--</v-flex>-->
-      <!--</v-layout>-->
-    <!--</v-footer>-->
+
+      <v-footer height="auto" class="blue lighten-3">
+          <v-container
+                  fluid
+                  style="min-height: 0;"
+                  grid-list-lg
+          >
+              <v-layout row wrap>
+                  <v-flex xs11 offset-xs1 class="mt-5 mb-3">
+                      <span class="display-1 white--text hidden-xs-only">
+                          羅博特科技有限公司 Robotech Co.,Ltd.
+                      </span>
+                      <span class="headline white--text hidden-sm-and-up">
+                          羅博特科技有限公司 Robotech Co.,Ltd.
+                      </span>
+                  </v-flex>
+
+                  <v-flex xs12 sm12 md4>
+                      <v-list class="transparent" dark>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">phone</v-icon>
+                              </v-list-tile-action>
+                              <v-list-tile-content>
+                                  <v-list-tile-title>
+                                      <span class="hidden-xs-only">總公司聯絡電話:</span> 04-2358 2929 （代表號）
+                                  </v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">place</v-icon>
+                              </v-list-tile-action>
+
+                              <p class="pt-3">台中巿407西屯區工業區一路98巷7弄60號</p>
+
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">email</v-icon>
+                              </v-list-tile-action>
+                              <v-list-tile-content>
+                                  <v-list-tile-title>service@robot-tech.com.tw</v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                      </v-list>
+                  </v-flex>
+                  <v-flex xs12 sm12 md4>
+                      <v-list class="transparent" dark>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">place</v-icon>
+                              </v-list-tile-action>
+
+                              <p class="pt-3">南辦事處/訓練中心：台南巿新巿區中華路49號</p>
+
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">place</v-icon>
+                              </v-list-tile-action>
+
+                              <p class="pt-3">遠東科技大學自動化控制系A24系統監控研究室</p>
+
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">phone</v-icon>
+                              </v-list-tile-action>
+                              <v-list-tile-content>
+                                  <v-list-tile-title><span class="hidden-xs-only">南區營業電話 ：</span> 06-355 1958</v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                      </v-list>
+                  </v-flex>
+                  <v-flex xs12 sm12 md4>
+                      <v-list class="transparent" dark>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">place</v-icon>
+                              </v-list-tile-action>
+                              <v-list-tile-content>
+                                  <v-list-tile-title><span class="hidden-xs-only">北區聯絡處：</span> 艾博特科技服務股份有限公司</v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">place</v-icon>
+                              </v-list-tile-action>
+
+                              <p class="pt-3">台北市10456中山區長安東路二段52號3樓</p>
+
+                          </v-list-tile>
+                          <v-list-tile>
+                              <v-list-tile-action>
+                                  <v-icon class="white--text">phone</v-icon>
+                              </v-list-tile-action>
+                              <v-list-tile-content>
+                                  <v-list-tile-title><span class="hidden-xs-only">北區聯絡電話 :</span> 02-2521-6731</v-list-tile-title>
+                              </v-list-tile-content>
+                          </v-list-tile>
+                      </v-list>
+                  </v-flex>
+
+                  <v-flex xs12 py-3 text-xs-center white--text class="mt-2">
+                      <strong>Copyright © 2018 Robotech. All Rights Reserved</strong>
+                  </v-flex>
+              </v-layout>
+          </v-container>
+      </v-footer>
+
   </v-app>
 </template>
 

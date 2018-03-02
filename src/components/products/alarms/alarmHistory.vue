@@ -53,6 +53,7 @@
                         item-key="id"
                         select-all
                         class="elevation-1"
+                        :rows-per-page-items="row_per_page"
                 >
                     <template slot="headerCell" slot-scope="props">
                         <v-tooltip bottom>
@@ -118,6 +119,7 @@
                     { text: 'ALARM TIME', sortable: false },
                     { text: 'ALARM ID', sortable: false },
                 ],
+                row_per_page: [10, 25, 50, { text: "All", value: -1 }],
                 myOrder: 'desc',
                 e: 'latest'
                 // items: [
