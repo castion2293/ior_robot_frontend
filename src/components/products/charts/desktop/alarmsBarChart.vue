@@ -13,7 +13,7 @@
             return {
                 myChart: '',
                 config: {
-                    type: 'bar',
+                    type: 'horizontalBar',
                     data: {
                         labels: [],
                         datasets: [{
@@ -57,7 +57,7 @@
                         },
                         //All of my other bar chart option here
                         scales: {
-                            yAxes: [{
+                            xAxes: [{
                                 ticks: {
                                     beginAtZero:true
                                 }

@@ -18,6 +18,8 @@ window.axios = axios;
 window.host = 'http://54.178.200.229/api'
 //window.host = 'http://localhost:8000/api'
 
+window.intervel = 1000
+
 Vue.use(Vuetify, { theme: {
   primary: '#64b5f6',
   secondary: '#424242',

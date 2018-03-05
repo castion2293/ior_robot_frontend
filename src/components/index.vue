@@ -31,7 +31,7 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <h2 class="headline">雲端資料收集的最佳解決方案</h2>
+            <h2 class="headline grey--text text--darken-3"><b>雲端資料收集的最佳解決方案</b></h2>
           </div>
         </v-flex>
         <v-flex xs12>
@@ -43,10 +43,10 @@
                     <v-icon x-large class="blue--text text--lighten-2">cloud</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="headline text-xs-center"><strong>雲端資料收集</strong></div>
+                    <div class="headline text-xs-center grey--text text--darken-3"><strong>雲端資料收集</strong></div>
                   </v-card-title>
-                  <v-card-text>
-                    資料即時上傳雲端，並儲存至雲端資料庫，方便做大數據管理及分析，本系統是建立在亞馬遜雲端服務，資料安全又有保障
+                  <v-card-text class="grey--text text--darken-2">
+                      <b>資料即時上傳雲端，並儲存至雲端資料庫，方便做大數據管理及分析，本系統是建立在亞馬遜雲端服務系統，資料安全可靠又有保障</b>
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -56,10 +56,10 @@
                     <v-icon x-large class="blue--text text--lighten-2">notifications</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="headline"><strong>警報即時通知</strong></div>
+                    <div class="headline grey--text text--darken-3"><strong>警報即時通知</strong></div>
                   </v-card-title>
-                  <v-card-text>
-                    遠端監控，出現異常訊號都會立即上傳雲端，異常訊號會建立成列表，方便日後做查詢與分析，系統也有提供異常排除的建議方式
+                  <v-card-text class="grey--text text--darken-2">
+                      <b>遠端監控，出現異常訊號會立即上傳雲端，平台提供異常訊號列表，方便日後做查詢與分析，系統也有提供異常排除的建議方式</b>
                   </v-card-text>
                 </v-card>
               </v-flex>
@@ -69,11 +69,50 @@
                     <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="headline text-xs-center"><strong>遠端維修服務</strong></div>
+                    <div class="headline grey--text text--darken-3 text-xs-center"><strong>遠端維修服務</strong></div>
                   </v-card-title>
-                  <v-card-text>
-                    雲端監控，任何的資料訊號皆可在本地端使用瀏覽器做確認，工程師不須每次都要到現場才可以做故障排除，大大地省下時間及出差成本
+                  <v-card-text class="grey--text text--darken-2">
+                    <b>雲端監控，任何的資料訊號皆可在本地端使用瀏覽器做確認，工程師不須每次都要到現場才可以做故障排除，大大省下時間及出差成本</b>
                   </v-card-text>
+                </v-card>
+              </v-flex>
+              <v-flex xs12 md4 class="mt-3">
+                <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                        <v-icon x-large class="blue--text text--lighten-2">equalizer</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                        <div class="headline grey--text text--darken-3 text-xs-center"><strong>產能產量分析</strong></div>
+                    </v-card-title>
+                    <v-card-text class="grey--text text--darken-2">
+                        <b>機台運轉過程中，可以即時統計產品產量，資料會在雲端做儲存，可以透過本平台做產能分析，方便日後估算出貨時間及交期</b>
+                    </v-card-text>
+                </v-card>
+              </v-flex>
+              <v-flex xs12 md4 class="mt-3">
+                <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                        <v-icon x-large class="blue--text text--lighten-2">trending_up</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                        <div class="headline grey--text text--darken-3 text-xs-center"><strong>運轉量稼動率</strong></div>
+                    </v-card-title>
+                    <v-card-text class="grey--text text--darken-2">
+                        <b>每日固定時間做機台的運轉量計算，控管機台，減少待機時間，提升運轉稼動率，使機台可以做到最有效率地輸出</b>
+                    </v-card-text>
+                </v-card>
+              </v-flex>
+              <v-flex xs12 md4 class="mt-3">
+                <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                        <v-icon x-large class="blue--text text--lighten-2">access_time</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                        <div class="headline grey--text text--darken-3 text-xs-center"><strong>定期保養通知</strong></div>
+                    </v-card-title>
+                    <v-card-text class="grey--text text--darken-2">
+                        <b>在雲端平台建立保養時程表，系統會自動提醒機台保養時間，避免人為疏忽造成機台損壞，增加日後的維修成本</b>
+                    </v-card-text>
                 </v-card>
               </v-flex>
 

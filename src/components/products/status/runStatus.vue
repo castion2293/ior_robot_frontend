@@ -659,7 +659,7 @@
                     this.$store.dispatch('getSingleSUStatue', this.product_id)
                     this.$store.dispatch('getSingleTotalStatus', this.product_id)
                     this.$store.dispatch('getCoordinate', this.product_id)
-                }.bind(this), 1000)
+                }.bind(this), intervel)
         },
         methods: {
 

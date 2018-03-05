@@ -293,7 +293,7 @@
             this.myTimer = setInterval(
                 function() {
                     this.$store.dispatch('getSingleTotalStatus', this.product_id)
-                }.bind(this), 1000)
+                }.bind(this), intervel)
         },
         beforeDestroy () {
             clearInterval(this.myTimer)
