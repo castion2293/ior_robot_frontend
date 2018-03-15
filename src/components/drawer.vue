@@ -79,6 +79,16 @@
                             <v-list-tile-title class="grey--text text--darken-1"><b>運轉狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/coordinateStatus/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>座標狀態</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/customioStatus/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>自訂I/O狀態</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
                     <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/status/totalioStatus/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>綜合I/O狀態</b></v-list-tile-title>
@@ -89,11 +99,6 @@
                       <v-list-tile-title class="grey--text text--darken-1"><b>系統I/O狀態</b></v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer">
-                        <v-list-tile-content>
-                            <v-list-tile-title class="grey--text text--darken-1"><b>稼動率</b></v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
                 </v-list-group>
 
                 <v-list-group>
@@ -131,6 +136,11 @@
                         <v-list-tile-action>
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
+                    </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>稼動率</b></v-list-tile-title>
+                        </v-list-tile-content>
                     </v-list-tile>
                 </v-list-group>
 

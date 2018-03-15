@@ -79,11 +79,11 @@
 
             this.$store.dispatch('getAllSUStatus')
 
-            this.myTimer = setInterval(
-                function() {
-                    this.$store.dispatch('getAllSUStatus')
-                    this.$store.dispatch('getAllTotalStatus')
-                }.bind(this), 3000)
+            // this.myTimer = setInterval(
+            //     function() {
+            //         this.$store.dispatch('getAllSUStatus')
+            //         this.$store.dispatch('getAllTotalStatus')
+            //     }.bind(this), 3000)
         },
         beforeDestroy () {
             clearInterval(this.myTimer)

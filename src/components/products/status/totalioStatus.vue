@@ -290,10 +290,10 @@
         mounted () {
             this.$store.dispatch('getSingleTotalStatus', this.product_id)
 
-            this.myTimer = setInterval(
-                function() {
-                    this.$store.dispatch('getSingleTotalStatus', this.product_id)
-                }.bind(this), intervel)
+            // this.myTimer = setInterval(
+            //     function() {
+            //         this.$store.dispatch('getSingleTotalStatus', this.product_id)
+            //     }.bind(this), intervel)
         },
         beforeDestroy () {
             clearInterval(this.myTimer)
