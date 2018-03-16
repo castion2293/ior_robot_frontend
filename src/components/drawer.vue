@@ -170,22 +170,22 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userBasic">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>基本設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userProduct">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>產品設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userNotication">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userLike">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>

@@ -3,7 +3,6 @@
         <loader v-if="loading"></loader>
 
         <v-container
-          fluid
           style="min-height: 0;"
           grid-list-lg
         >

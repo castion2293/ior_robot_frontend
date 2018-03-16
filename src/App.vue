@@ -29,20 +29,26 @@
               <v-btn icon slot="activator" dark>
                   <v-icon>keyboard_arrow_down</v-icon>
               </v-btn>
-              <v-list>
-                  <v-list-tile @click="">
+              <v-list>`
+                  <v-list-tile @click="" to="/dashboard/settings/userBasic">
                       <v-icon class="mr-3" color="blue lighten-3">person</v-icon>
                       <v-list-tile-title class="mr-3"><strong>基本設定</strong></v-list-tile-title>
                   </v-list-tile>
               </v-list>
               <v-list>
-                  <v-list-tile @click="">
+                  <v-list-tile @click="" to="/dashboard/settings/userProduct">
+                      <v-icon class="mr-3" color="blue lighten-3">kitchen</v-icon>
+                      <v-list-tile-title class="mr-3"><strong>產品設定</strong></v-list-tile-title>
+                  </v-list-tile>
+              </v-list>
+              <v-list>
+                  <v-list-tile @click="" to="/dashboard/settings/userNotication">
                       <v-icon class="mr-3" color="blue lighten-3">notifications</v-icon>
                       <v-list-tile-title class="mr-3"><strong>警報設定</strong></v-list-tile-title>
                   </v-list-tile>
               </v-list>
               <v-list>
-                  <v-list-tile @click="">
+                  <v-list-tile @click="" to="/dashboard/settings/userLike">
                       <v-icon class="mr-3" color="blue lighten-3">card_giftcard</v-icon>
                       <v-list-tile-title class="mr-3"><strong>喜好設定</strong></v-list-tile-title>
                   </v-list-tile>

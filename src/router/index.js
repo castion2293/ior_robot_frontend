@@ -13,6 +13,11 @@ import alarmHistory from '../components/products/alarms/alarmHistory'
 import alarmDetailed from '../components/products/alarms/alarmDetailed'
 import alarmCharts from '../components/products/alarms/alarmCharts'
 
+import userBasic from '../components/settings/userBasic'
+import userProduct from '../components/settings/userProduct'
+import userNotication from '../components/settings/userNotication'
+import userLike from '../components/settings/userLike'
+
 Vue.use(Router)
 
 export default new Router({
@@ -84,7 +89,35 @@ export default new Router({
         component: alarmCharts,
         props: true,
         beforeEnter: AuthGuard
-    }
+    },
+    {
+        path: '/dashboard/settings/userBasic',
+        name: 'userBasic',
+        component: userBasic,
+        props: true,
+        beforeEnter: AuthGuard
+    },
+    {
+        path: '/dashboard/settings/userProduct',
+        name: 'userProduct',
+        component: userProduct,
+        props: true,
+        beforeEnter: AuthGuard
+    },
+    {
+        path: '/dashboard/settings/userNotication',
+        name: 'userNotication',
+        component: userNotication,
+        props: true,
+        beforeEnter: AuthGuard
+    },
+    {
+        path: '/dashboard/settings/userLike',
+        name: 'userLike',
+        component: userLike,
+        props: true,
+        beforeEnter: AuthGuard
+    },
   ],
   mode: 'history'
 })

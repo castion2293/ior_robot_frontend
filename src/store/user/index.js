@@ -7,7 +7,8 @@ export default {
             email: '',
             photo: '',
             token: '',
-            token_name: ''
+            token_name: '',
+            id: ''
         },
     },
     getters: {
@@ -34,6 +35,7 @@ export default {
                     localStorage.setItem('email', user.email)
                     localStorage.setItem('photo', user.photo)
                     localStorage.setItem('token_name', user.token_name)
+                    localStorage.setItem('id', user.id)
 
                     // check is there any original url
                     let path = localStorage.getItem('original_url')
@@ -63,6 +65,7 @@ export default {
                     localStorage.removeItem('email')
                     localStorage.removeItem('photo')
                     localStorage.removeItem('token_name')
+                    localStorage.removeItem('id')
 
                     let user = {
                         name: '',
@@ -70,6 +73,7 @@ export default {
                         photo: '',
                         token: '',
                         token_name: '',
+                        id: ''
                     }
 
                     commit('setUser', user)
@@ -92,7 +96,9 @@ export default {
                 name: localStorage.getItem('name'),
                 email: localStorage.getItem('email'),
                 photo: localStorage.getItem('photo'),
-                token: localStorage.getItem('token')
+                token: localStorage.getItem('token'),
+                token_name: localStorage.getItem('token_name'),
+                id: localStorage.getItem('id')
             }
 
             commit('setUser', user)
@@ -104,7 +110,9 @@ export default {
                     name: localStorage.getItem('name'),
                     email: localStorage.getItem('email'),
                     photo: localStorage.getItem('photo'),
-                    token: localStorage.getItem('token')
+                    token: localStorage.getItem('token'),
+                    token_name: localStorage.getItem('token_name'),
+                    id: localStorage.getItem('id')
                 }
 
                 commit('setUser', user)
