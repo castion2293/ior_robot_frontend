@@ -1,3 +1,5 @@
+import router from "../../router";
+
 export default {
     state: {
         drawer: false,
@@ -82,7 +84,37 @@ export default {
                     commit('setDrawerProduct')
                 })
                 .catch(error => {
-                    commit('setError', error.response.data.error)
+                    if (error.response.data.message == "Unauthenticated.") {
+
+                        //empty localstorage data
+                        localStorage.removeItem('token')
+                        localStorage.removeItem('name')
+                        localStorage.removeItem('email')
+                        localStorage.removeItem('photo')
+                        localStorage.removeItem('token_name')
+                        localStorage.removeItem('id')
+
+                        let user = {
+                            name: '',
+                            email: '',
+                            photo: '',
+                            token: '',
+                            token_name: '',
+                            id: ''
+                        }
+
+                        commit('setUser', user)
+
+                        //push url to index page
+                        router.push('/')
+                    }
+
+                    //check if user doesn't have product
+                    if(Boolean(error.response.data.error)) {
+                        console.log("my error: " + Boolean(error.response.data.error))
+
+                        commit('setError', error.response.data.error)
+                    }
                 })
         },
         reloadDrawerProducts ({commit}, payload) {
