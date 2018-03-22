@@ -15,11 +15,11 @@
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md4
                                 v-for="product in reset_products"
-                                :key="product.ID"
+                                :key="product.id"
                                 v-if="product.group === group"
                         >
                             <div @click="">
-                                <v-card color="blue lighten-1" ripple class="white--text" style="cursor:pointer;">
+                                <v-card color="blue lighten-1" ripple class="white--text" style="cursor:pointer;" :to="`/dashboard/settings/userProduct/${product.id}`">
                                     <v-container fluid grid-list-lg>
                                         <v-layout row>
                                             <v-flex xs7>
@@ -57,7 +57,7 @@
     import { mapGetters } from 'vuex'
 
     export default {
-        name: "user-product",
+        name: "user-products",
         components: {
             drawer,
             loader
@@ -73,7 +73,7 @@
             this.$store.dispatch('takeLoading', true)
 
             this.$store.dispatch('getResetProducts')
-        }
+        },
     }
 </script>
 

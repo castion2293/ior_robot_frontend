@@ -8,7 +8,7 @@
                 grid-list-lg
         >
             <v-layout row wrap>
-                <v-flex xs12 sm6 md4 v-for="product in products" :key="product.ID">
+                <v-flex xs12 sm6 md4 v-for="product in products" :key="product.id">
                     <div @click="selectProduct(product)">
                         <v-card color="blue lighten-1" ripple class="white--text" style="cursor:pointer;" :to="`/dashboard/products/status/runStatus/${product.ID}`">
                             <v-container fluid grid-list-lg>

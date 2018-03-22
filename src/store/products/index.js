@@ -8,6 +8,7 @@ export default {
         },
         reset_products: [],
         reset_groups: [],
+        reset_product: ''
     },
     getters: {
         drawer_products (state) {
@@ -21,6 +22,9 @@ export default {
         },
         reset_groups (state) {
             return state.reset_groups
+        },
+        reset_product (state) {
+            return state.reset_product
         }
     },
     mutations: {
@@ -69,6 +73,9 @@ export default {
             }))
 
             state.reset_products = payload
+        },
+        setResetProduct (state, payload) {
+            state.reset_product = payload
         }
     },
     actions: {
@@ -115,14 +122,17 @@ export default {
                     }
                 })
         },
-        reloadDrawerProducts ({commit}, payload) {
+        reloadDrawerProducts ({commit}, payload = null) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
             axios.defaults.headers.common['Accept'] = 'application/json'
 
             axios.get(host + '/product')
                 .then(response => {
                     commit('setDrawerProducts', response.data.data.items)
-                    commit('resetDrawerProduct', payload)
+
+                    if (payload !== null) {
+                        commit('resetDrawerProduct', payload)
+                    }
                 })
                 .catch(error => {
                     console.log(error)
@@ -134,7 +144,7 @@ export default {
 
             axios.get(host + '/product')
             .then(response => {
-                console.log(response.data.data.items)
+                // console.log(response.data.data.items)
                 commit('setResetProducts', response.data.data.items)
 
                 commit('setLoading', false)
@@ -142,6 +152,83 @@ export default {
             .catch (error => {
                 console.log(error)
             })
+        },
+        getResetProduct ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`${host}/product/${payload}/edit`)
+                .then(response => {
+                    //console.log(response)
+
+                    commit('setResetProduct', response.data)
+
+                    commit('setLoading', false)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        resetProductProfile ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.put(`${host}/product/${payload.id}`, payload)
+                .then(response => {
+                    //console.log(response)
+
+                    let product = response.data
+
+                    commit('setResetProduct', product)
+
+                    this.dispatch('reloadDrawerProducts')
+
+                    commit('setSuccessSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setSuccessSnackbar', false)
+                    }, 3000)
+                })
+                .catch(error => {
+                    console.log(error)
+
+                    commit('setFailureSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setFailureSnackbar', false)
+                    }, 3000);
+                })
+        },
+        resetProductAvatar ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.post(host + '/product/reset/avatar', payload)
+                .then(response => {
+                    //console.log(response)
+
+                    let product = response.data
+
+                    commit('setResetProduct', product)
+
+                    this.dispatch('reloadDrawerProducts')
+
+                    commit('setSuccessSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setSuccessSnackbar', false)
+                    }, 3000)
+                })
+                .catch(error => {
+                    console.log(error)
+
+                    commit('setFailureSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setFailureSnackbar', false)
+                    }, 3000);
+                })
         }
+
     }
 }

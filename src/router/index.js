@@ -15,109 +15,120 @@ import alarmCharts from '../components/products/alarms/alarmCharts'
 
 import userBasic from '../components/settings/userBasic'
 import userProducts from '../components/settings/userProducts'
+import userProduct from '../components/settings/userProduct'
 import userNotication from '../components/settings/userNotication'
 import userLike from '../components/settings/userLike'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-        path: '/',
-        name: 'Index',
-        component: index,
-        beforeEnter: Guest
-    },
-    {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: dashboard,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/status/runStatus/:product_id',
-        name: 'runStatus',
-        component: runStatus,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/status/coordinateStatus/:product_id',
-        name: 'coordinateStatus',
-        component: coordinateStatus,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/status/customioStatus/:product_id',
-        name: 'customioStatus',
-        component: customioStatus,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/status/totalioStatus/:product_id',
-        name: 'totalioStatus',
-        component: totalioStatus,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-      path: '/dashboard/products/status/systemioStatus/:product_id',
-      name: 'systemioStatus',
-      component: systemioStatus,
-      props: true,
-      beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/alarm/alarmHistory/:product_id',
-        name: 'alarmHistory',
-        component: alarmHistory,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/alarm/alarmDetailed/:id/:code',
-        name: 'alarmDetailed',
-        component: alarmDetailed,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/products/alarm/alarmCharts/:product_id',
-        name: 'alarmCharts',
-        component: alarmCharts,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/settings/userBasic',
-        name: 'userBasic',
-        component: userBasic,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/settings/userProducts',
-        name: 'userProducts',
-        component: userProducts,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/settings/userNotication',
-        name: 'userNotication',
-        component: userNotication,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-    {
-        path: '/dashboard/settings/userLike',
-        name: 'userLike',
-        component: userLike,
-        props: true,
-        beforeEnter: AuthGuard
-    },
-  ],
-  mode: 'history'
+    routes: [
+        {
+            path: '/',
+            name: 'Index',
+            component: index,
+            beforeEnter: Guest
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            component: dashboard,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/status/runStatus/:product_id',
+            name: 'runStatus',
+            component: runStatus,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/status/coordinateStatus/:product_id',
+            name: 'coordinateStatus',
+            component: coordinateStatus,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/status/customioStatus/:product_id',
+            name: 'customioStatus',
+            component: customioStatus,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/status/totalioStatus/:product_id',
+            name: 'totalioStatus',
+            component: totalioStatus,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+          path: '/dashboard/products/status/systemioStatus/:product_id',
+          name: 'systemioStatus',
+          component: systemioStatus,
+          props: true,
+          beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/alarm/alarmHistory/:product_id',
+            name: 'alarmHistory',
+            component: alarmHistory,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/alarm/alarmDetailed/:id/:code',
+            name: 'alarmDetailed',
+            component: alarmDetailed,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/alarm/alarmCharts/:product_id',
+            name: 'alarmCharts',
+            component: alarmCharts,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userBasic',
+            name: 'userBasic',
+            component: userBasic,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userProducts',
+            name: 'userProducts',
+            component: userProducts,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userProduct/:product_id',
+            name: 'userProduct',
+            component: userProduct,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userNotication',
+            name: 'userNotication',
+            component: userNotication,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userLike',
+            name: 'userLike',
+            component: userLike,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+    ],
+    mode: 'history',
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
