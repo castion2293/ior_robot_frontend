@@ -206,7 +206,7 @@
   </div>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add "scoped" attribute to limit CSS to this products only -->
 <style scoped>
 .bgimg-1:before {
   position: absolute;

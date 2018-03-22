@@ -36,7 +36,7 @@
                   </v-list-tile>
               </v-list>
               <v-list>
-                  <v-list-tile @click="" to="/dashboard/settings/userProduct">
+                  <v-list-tile @click="" to="/dashboard/settings/userProducts">
                       <v-icon class="mr-3" color="blue lighten-3">kitchen</v-icon>
                       <v-list-tile-title class="mr-3"><strong>產品設定</strong></v-list-tile-title>
                   </v-list-tile>
@@ -328,7 +328,7 @@ export default {
       },
       dismissError () {
           this.clearError()
-      }
+      },
   }
 }
 </script>

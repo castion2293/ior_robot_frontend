@@ -2,37 +2,28 @@ import router from "../../router";
 
 export default {
     state: {
-        drawer: false,
-        miniVariant: false,
         drawer_products: [],
         drawer_product: {
             name: ''
-        }
+        },
+        reset_products: [],
+        reset_groups: [],
     },
     getters: {
-        drawer (state) {
-            return state.drawer
-        },
-        miniVariant (state) {
-            return state.miniVariant
-        },
         drawer_products (state) {
             return state.drawer_products
         },
         drawer_product (state) {
             return state.drawer_product
+        },
+        reset_products (state) {
+            return state.reset_products
+        },
+        reset_groups (state) {
+            return state.reset_groups
         }
     },
     mutations: {
-        toggleDrawer (state) {
-            state.drawer = !state.drawer
-        },
-        setDrawer (state, payload) {
-            state.drawer = payload
-        },
-        toggleminiVariant (state) {
-            state.miniVariant = !state.miniVariant
-        },
         setDrawerProducts (state, payload) {
 
             let products = _.map(payload, product => {
@@ -71,6 +62,13 @@ export default {
             state.drawer_product = state.drawer_products.find(product => {
                 return product.name === payload
             })
+        },
+        setResetProducts (state, payload) {
+            state.reset_groups = _.uniq(_.map(payload, product => {
+                return product.group
+            }))
+
+            state.reset_products = payload
         }
     },
     actions: {
@@ -130,8 +128,20 @@ export default {
                     console.log(error)
                 })
         },
-        closeDrawer ({commit}, payload) {
-            commit('setDrawer', payload)
+        getResetProducts ({commit}) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(host + '/product')
+            .then(response => {
+                console.log(response.data.data.items)
+                commit('setResetProducts', response.data.data.items)
+
+                commit('setLoading', false)
+            })
+            .catch (error => {
+                console.log(error)
+            })
         }
     }
 }

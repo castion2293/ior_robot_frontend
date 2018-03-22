@@ -14,7 +14,7 @@ import alarmDetailed from '../components/products/alarms/alarmDetailed'
 import alarmCharts from '../components/products/alarms/alarmCharts'
 
 import userBasic from '../components/settings/userBasic'
-import userProduct from '../components/settings/userProduct'
+import userProducts from '../components/settings/userProducts'
 import userNotication from '../components/settings/userNotication'
 import userLike from '../components/settings/userLike'
 
@@ -98,9 +98,9 @@ export default new Router({
         beforeEnter: AuthGuard
     },
     {
-        path: '/dashboard/settings/userProduct',
-        name: 'userProduct',
-        component: userProduct,
+        path: '/dashboard/settings/userProducts',
+        name: 'userProducts',
+        component: userProducts,
         props: true,
         beforeEnter: AuthGuard
     },

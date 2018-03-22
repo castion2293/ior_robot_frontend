@@ -175,7 +175,7 @@
                             <v-list-tile-title class="grey--text text--darken-1"><b>基本設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userProduct">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userProducts">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>產品設定</b></v-list-tile-title>
                         </v-list-tile-content>
