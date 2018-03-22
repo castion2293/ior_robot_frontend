@@ -1,6 +1,8 @@
 <template>
     <v-app>
         <loader v-if="loading"></loader>
+        <sucessSnackbar></sucessSnackbar>
+        <failureSnackbar></failureSnackbar>
 
         <v-container grid-list-lg text-xs-center class="mt-5">
             <v-layout row wrap>
@@ -48,7 +50,7 @@
                                         <v-spacer></v-spacer>
                                         <v-btn
                                                 :disabled="!valid_1"
-                                                @click="profileSubmit"
+                                                @click.prevent="profileSubmit"
                                                 color="primary"
                                         >
                                             確認
@@ -82,7 +84,7 @@
                                     ></v-text-field>
                                     <v-text-field
                                             label="輸入新密碼"
-                                            v-model="new_password"
+                                            v-model="password"
                                             :append-icon="e2 ? 'visibility' : 'visibility_off'"
                                             :append-icon-cb="() => (e2 = !e2)"
                                             :type="e2 ? 'text' : 'password'"
@@ -90,7 +92,7 @@
                                     ></v-text-field>
                                     <v-text-field
                                             label="確認新密碼"
-                                            v-model="confirm_password"
+                                            v-model="password_confirmation"
                                             :append-icon="e3 ? 'visibility' : 'visibility_off'"
                                             :append-icon-cb="() => (e3 = !e3)"
                                             :type="e3 ? 'text' : 'password'"
@@ -100,7 +102,7 @@
                                         <v-spacer></v-spacer>
                                         <v-btn
                                                 :disabled="!valid_2"
-                                                @click="passwordSubmit"
+                                                @click.prevent="passwordSubmit"
                                                 color="primary"
                                         >
                                             確認
@@ -122,7 +124,9 @@
 <script>
     import drawer from '../drawer'
     import loader from '../loader'
-    import { mapGetters } from 'vuex'
+    import sucessSnackbar from '../successSnackbar'
+    import failureSnackbar from '../failureSnackbar'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "user-basic",
@@ -137,8 +141,8 @@
                 e2: false,
                 e3: false,
                 old_password: '',
-                new_password: '',
-                confirm_password: '',
+                password: '',
+                password_confirmation: '',
                 nameRules: [
                     (v) => !!v || '必須填入姓名',
                 ],
@@ -150,7 +154,9 @@
         },
         components: {
             drawer,
-            loader
+            loader,
+            sucessSnackbar,
+            failureSnackbar
         },
         computed: {
             ...mapGetters([
@@ -170,20 +176,32 @@
             }, 2000)
         },
         methods: {
+            ...mapActions([
+                'resetUserProfile',
+                'resetUserPassword',
+                'resetUserAvatar'
+            ]),
             profileSubmit () {
-                if (this.$refs.form.validate()) {
-                    // Native form submission is not yet supported
-                    // axios.post('/api/submit', {
-                    //     name: this.name,
-                    //     email: this.email,
-                    // })
+                if (this.$refs.form_1.validate()) {
+                    this.resetUserProfile({
+                        name: this.name,
+                        email: this.email
+                    })
                 }
             },
             profileClear () {
                 this.$refs.form_1.reset()
             },
             passwordSubmit () {
+                if (this.$refs.form_2.validate()) {
+                    this.resetUserPassword({
+                        old_password: this.old_password,
+                        password: this.password,
+                        password_confirmation: this.password_confirmation
+                    })
+                }
 
+                this.$refs.form_2.reset()
             },
             passwordClear () {
                 this.$refs.form_2.reset()
@@ -197,7 +215,9 @@
                 }
             },
             uploadImage () {
-
+                this.resetUserAvatar({
+                    'avatar':  this.avatar
+                })
             }
         }
     }
