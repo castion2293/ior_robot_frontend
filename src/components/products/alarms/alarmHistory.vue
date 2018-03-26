@@ -26,8 +26,23 @@
                     <!--</v-layout>-->
                 <!--</v-card-title>-->
                 <v-card-title>
-                  <v-layout row wrap>
-                    <v-flex xs12 sm6 md3 offset-md9>
+                  <!--<v-layout row wrap>-->
+                    <!--<v-flex xs12 sm6 md3 offset-md9>-->
+                        <v-btn
+                            color="blue-grey"
+                            class="white--text"
+                        >
+                            PDF
+                            <v-icon right dark>picture_as_pdf</v-icon>
+                        </v-btn>
+                        <v-btn
+                                color="success"
+                                class="white--text"
+                        >
+                            EXCEL
+                            <v-icon right dark>insert_comment</v-icon>
+                        </v-btn>
+                        <v-spacer></v-spacer>
                         <v-btn-toggle v-model="e">
                             <v-btn flat value="latest" @click="myOrder = 'desc'">
                                 <span class="grey--text text--darken-1"><strong>排序: 最近~最久</strong></span>
@@ -36,8 +51,8 @@
                                 <span class="grey--text text--darken-1"><strong>排序: 最久~最近</strong></span>
                             </v-btn>
                         </v-btn-toggle>
-                    </v-flex>
-                  </v-layout>
+                    <!--</v-flex>-->
+                  <!--</v-layout>-->
                 </v-card-title>
                 <v-container
                         fluid

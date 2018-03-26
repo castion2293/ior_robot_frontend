@@ -66,12 +66,14 @@ export default {
                 let count = 0
 
                 _.find(alarmDates, alarmDate => {
-                    (new Date(alarmDate).getDate() === dateArray.getDate()) ? count++ : count = count
+                    (new Date(alarmDate).getMonth() === dateArray.getMonth()) &&
+                    (new Date(alarmDate).getDate() === dateArray.getDate())
+                        ? count++ : count = count
                 })
 
                 numbers.push(count)
             })
-
+console.log(numbers)
             commit('setNumbers', numbers)
         },
         settingDates ({commit}, payload) {
