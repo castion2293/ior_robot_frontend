@@ -73,7 +73,7 @@ export default {
 
                 numbers.push(count)
             })
-console.log(numbers)
+
             commit('setNumbers', numbers)
         },
         settingDates ({commit}, payload) {

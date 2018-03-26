@@ -215,9 +215,7 @@
                 }
             },
             uploadImage () {
-                this.resetUserAvatar({
-                    'avatar':  this.avatar
-                })
+                this.resetUserAvatar(this.product_id)
             }
         }
     }

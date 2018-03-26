@@ -28,20 +28,35 @@
                 <v-card-title>
                   <!--<v-layout row wrap>-->
                     <!--<v-flex xs12 sm6 md3 offset-md9>-->
-                        <v-btn
-                            color="blue-grey"
-                            class="white--text"
-                        >
-                            PDF
-                            <v-icon right dark>picture_as_pdf</v-icon>
-                        </v-btn>
-                        <v-btn
-                                color="success"
-                                class="white--text"
-                        >
-                            EXCEL
-                            <v-icon right dark>insert_comment</v-icon>
-                        </v-btn>
+                        <form :action="`${host}/alarm/export/pdf`" method="post" enctype="multipart/form-data">
+                            <!--<input type="hidden" name="csrfToken" :value="token">-->
+                            <!--<input type="hidden" name="Authorization" :value="token">-->
+                            <!--<input type="hidden" name="Accept" value="application/json">-->
+                            <input type="hidden" name="product_id" :value="product_id">
+                            <v-btn
+                                    color="blue-grey"
+                                    class="white--text"
+                                    type="submit"
+                            >
+                                PDF
+                                <v-icon right dark>picture_as_pdf</v-icon>
+                            </v-btn>
+                        </form>
+                        <form :action="`${host}/alarm/export/excel`" method="post" enctype="multipart/form-data">
+                            <!--<input type="hidden" name="csrfToken" :value="token">-->
+                            <!--<input type="hidden" name="Authorization" :value="token">-->
+                            <!--<input type="hidden" name="Accept" value="application/json">-->
+                            <input type="hidden" name="product_id" :value="product_id">
+                            <v-btn
+                                    color="success"
+                                    class="white--text"
+                                    type="submit"
+                            >
+                                EXCEL
+                                <v-icon right dark>explicit</v-icon>
+                            </v-btn>
+                        </form>
+
                         <v-spacer></v-spacer>
                         <v-btn-toggle v-model="e">
                             <v-btn flat value="latest" @click="myOrder = 'desc'">
@@ -108,7 +123,7 @@
 <script>
     import drawer from '../../drawer'
     import loader from '../../loader'
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "alarm-history",
@@ -135,7 +150,8 @@
                 ],
                 row_per_page: [10, 25, 50, { text: "All", value: -1 }],
                 myOrder: 'desc',
-                e: 'latest'
+                e: 'latest',
+                host: host
                 // items: [
                 //     {
                 //         value: false,
@@ -182,12 +198,18 @@
               })
 
               return this.order(alarm_group)
+            },
+            token () {
+                return 'Bearer ' + localStorage.getItem('token')
             }
         },
         mounted () {
             this.$store.dispatch('getAlarms', this.product_id)
         },
         methods: {
+            ...mapActions([
+                'getAlarmsPDF',
+            ]),
             alarmDetailed (id, code) {
                 this.$router.push(`/dashboard/products/alarm/alarmDetailed/${id}/${code}`)
             },
@@ -197,7 +219,7 @@
                 }
                 return _.orderBy(group, ['date', 'time'], ['asc', 'asc'])
 
-            }
+            },
         }
     }
 </script>
