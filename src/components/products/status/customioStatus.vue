@@ -22,56 +22,56 @@
                         >
                             <v-layout row wrap>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">感測檢知1</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN1 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[0]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">感測檢知2</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN2 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[1]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">感測檢知3</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN3 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[2]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DIN4</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN4 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[3]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DIN5</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN5 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[4]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DIN6</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN6 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[5]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DIN7</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN7 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[6]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DIN8</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DIN8 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_1_16[7]" fab dark small color="light-blue darken-1"></v-btn>
@@ -95,56 +95,56 @@
                         >
                             <v-layout row wrap>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">觸發訊號1</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT1 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[0]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">觸發訊號2</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT2 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[1]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">觸發訊號3</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT3 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[2]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DOUT4</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT4 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[3]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DOUT5</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT5 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[4]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DOUT6</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT6 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[5]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DOUT7</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT7 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[6]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">DOUT8</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.DOUT8 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_1_16[7]" fab dark small color="light-blue darken-1"></v-btn>
@@ -168,56 +168,56 @@
                         >
                             <v-layout row wrap>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">感測檢知4</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN1 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[0]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">感測檢知5</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN2 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[1]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN3</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN3 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[2]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN4</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN4 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[3]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN5</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN5 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[4]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN6</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN6 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[5]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN7</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN7 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[6]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HIN8</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HIN8 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DIN_201_216[7]" fab dark small color="light-blue darken-1"></v-btn>
@@ -241,56 +241,56 @@
                         >
                             <v-layout row wrap>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">氣壓缸1</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT1 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[0]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">氣壓缸2</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT2 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[1]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT3</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT3 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[2]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT4</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT4 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[3]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT5</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT5 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[4]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT6</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT6 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[5]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT7</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT7 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[6]" fab dark small color="light-blue darken-1"></v-btn>
                                     <v-btn v-else fab dark small color="grey lighten-1"></v-btn>
                                 </v-flex>
                                 <v-flex xs8>
-                                    <p class="body-1 text-xs-center pt-3">HOUT8</p>
+                                    <p class="body-1 text-xs-center pt-3">{{ productCustomerSetting.HOUT8 }}</p>
                                 </v-flex>
                                 <v-flex xs4>
                                     <v-btn v-if="product.DOUT_201_216[7]" fab dark small color="light-blue darken-1"></v-btn>
@@ -322,7 +322,8 @@
         computed: {
             ...mapGetters([
                 'single_total_status',
-                'loading'
+                'loading',
+                'productCustomerSetting'
             ]),
             product () {
                 return this.single_total_status
@@ -331,6 +332,7 @@
         mounted () {
             this.$store.dispatch('takeLoading', true)
             this.$store.dispatch('getSingleTotalStatus', this.product_id)
+            this.$store.dispatch('getProductCustomerSetting', this.product_id)
         }
     }
 </script>

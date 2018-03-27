@@ -48,7 +48,7 @@
                   </v-list-tile>
               </v-list>
               <v-list>
-                  <v-list-tile @click="" to="/dashboard/settings/userLike">
+                  <v-list-tile @click="" to="/dashboard/settings/userLikes">
                       <v-icon class="mr-3" color="blue lighten-3">card_giftcard</v-icon>
                       <v-list-tile-title class="mr-3"><strong>喜好設定</strong></v-list-tile-title>
                   </v-list-tile>

@@ -185,7 +185,7 @@
                             <v-list-tile-title class="grey--text text--darken-1"><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userLike">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userLikes">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>喜好設定</b></v-list-tile-title>
                         </v-list-tile-content>

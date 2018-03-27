@@ -17,6 +17,7 @@ import userBasic from '../components/settings/userBasic'
 import userProducts from '../components/settings/userProducts'
 import userProduct from '../components/settings/userProduct'
 import userNotication from '../components/settings/userNotication'
+import userLikes from '../components/settings/userLikes'
 import userLike from '../components/settings/userLike'
 
 Vue.use(Router)
@@ -120,7 +121,14 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/dashboard/settings/userLike',
+            path: '/dashboard/settings/userLikes',
+            name: 'userLikes',
+            component: userLikes,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/settings/userLike/:product_id',
             name: 'userLike',
             component: userLike,
             props: true,

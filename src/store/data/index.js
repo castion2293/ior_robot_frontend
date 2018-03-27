@@ -22,7 +22,8 @@ export default {
         alarms : null,
         alarm: {
             description: ''
-        }
+        },
+        productCustomerSetting: [],
     },
     getters: {
         all_su_status (state) {
@@ -45,6 +46,9 @@ export default {
         },
         alarm (state) {
             return state.alarm
+        },
+        productCustomerSetting (state) {
+            return state.productCustomerSetting
         }
     },
     mutations: {
@@ -68,6 +72,9 @@ export default {
         },
         setAlarm (state, payload) {
             state.alarm = payload
+        },
+        setProductCustomerSetting (state, payload) {
+            state.productCustomerSetting = payload
         }
     },
     actions: {
@@ -175,5 +182,20 @@ export default {
                     console.log(error)
                 })
         },
+        getProductCustomerSetting ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.get(`${host}/product/customer/setting?product_id=${payload}`)
+            .then(response => {
+                commit('setProductCustomerSetting', response.data)
+
+                //close loader
+                commit('setLoading', false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     }
 }
