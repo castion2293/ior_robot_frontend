@@ -196,6 +196,30 @@ export default {
             .catch(error => {
                 console.log(error)
             })
+        },
+        resetProductCustomerSetting ({commit}, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
+
+            axios.post(`${host}/product/customer/setting`, payload)
+                .then(response => {
+                    commit('setProductCustomerSetting', response.data)
+
+                    commit('setSuccessSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setSuccessSnackbar', false)
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.log(error)
+
+                    commit('setFailureSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setFailureSnackbar', false)
+                    }, 3000);
+                })
         }
     }
 }

@@ -27,7 +27,7 @@
                                     <p class="body-1 text-xs-center pt-3">DIN1</p>
                                 </v-flex>
                                 <v-flex xs8 color="white" class="pt-3">
-                                    <input type="text" class="w3-input w3-border" v-model="customer.DIN1">
+                                    <input type="text" class="w3-input w3-border" v-model="customer.DIN1" required>
                                 </v-flex>
                                 <v-flex xs4>
                                     <p class="body-1 text-xs-center pt-3">DIN2</p>
@@ -72,6 +72,15 @@
                                     <input type="text" class="w3-input w3-border" v-model="customer.DIN8">
                                 </v-flex>
                             </v-layout>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                    @click.prevent="customerSetting"
+                                    color="primary"
+                                >
+                                    確認
+                                </v-btn>
+                            </v-card-actions>
                         </v-container>
                     </v-card-text>
                 </v-flex>
@@ -137,6 +146,15 @@
                                     <input type="text" class="w3-input w3-border" v-model="customer.DOUT8">
                                 </v-flex>
                             </v-layout>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                        @click.prevent="customerSetting"
+                                        color="primary"
+                                >
+                                    確認
+                                </v-btn>
+                            </v-card-actions>
                         </v-container>
                     </v-card-text>
                 </v-flex>
@@ -202,6 +220,15 @@
                                     <input type="text" class="w3-input w3-border" v-model="customer.HIN8">
                                 </v-flex>
                             </v-layout>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                        @click.prevent="customerSetting"
+                                        color="primary"
+                                >
+                                    確認
+                                </v-btn>
+                            </v-card-actions>
                         </v-container>
                     </v-card-text>
                 </v-flex>
@@ -267,6 +294,15 @@
                                     <input type="text" class="w3-input w3-border" v-model="customer.HOUT8">
                                 </v-flex>
                             </v-layout>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                        @click.prevent="customerSetting"
+                                        color="primary"
+                                >
+                                    確認
+                                </v-btn>
+                            </v-card-actions>
                         </v-container>
                     </v-card-text>
                 </v-flex>
@@ -314,7 +350,12 @@
 
         },
         methods: {
-
+            ...mapActions([
+                'resetProductCustomerSetting'
+            ]),
+            customerSetting() {
+                this.resetProductCustomerSetting(this.customer)
+            }
         }
     }
 </script>
