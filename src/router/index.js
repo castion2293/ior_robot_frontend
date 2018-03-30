@@ -4,19 +4,24 @@ import AuthGuard from './auth-guard'
 import Guest from './guest'
 import index from '../components/index'
 import dashboard from '../components/products/dashboard'
+
 import runStatus from '../components/products/status/runStatus'
 import coordinateStatus from '../components/products/status/coordinateStatus'
 import customioStatus from '../components/products/status/customioStatus'
 import totalioStatus from '../components/products/status/totalioStatus'
 import systemioStatus from '../components/products/status/systemioStatus'
+
 import alarmHistory from '../components/products/alarms/alarmHistory'
 import alarmDetailed from '../components/products/alarms/alarmDetailed'
 import alarmCharts from '../components/products/alarms/alarmCharts'
 
+import dailyThroughput from '../components/products/throughput/dailyThroughput'
+import cumulateThroughput from '../components/products/throughput/cumulateThroughput'
+
 import userBasic from '../components/settings/userBasic'
 import userProducts from '../components/settings/userProducts'
 import userProduct from '../components/settings/userProduct'
-import userNotication from '../components/settings/userNotication'
+import userNotification from '../components/settings/userNotification'
 import userLikes from '../components/settings/userLikes'
 import userLike from '../components/settings/userLike'
 
@@ -93,6 +98,20 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
+            path: '/dashboard/products/throughput/daily/:product_id',
+            name: 'dailyThroughput',
+            component: dailyThroughput,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/throughput/cumulate/:product_id',
+            name: 'cumulateThroughput',
+            component: cumulateThroughput,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
             path: '/dashboard/settings/userBasic',
             name: 'userBasic',
             component: userBasic,
@@ -114,9 +133,9 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/dashboard/settings/userNotication',
-            name: 'userNotication',
-            component: userNotication,
+            path: '/dashboard/settings/userNotification',
+            name: 'userNotification',
+            component: userNotification,
             props: true,
             beforeEnter: AuthGuard
         },

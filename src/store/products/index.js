@@ -123,8 +123,7 @@ export default {
                 })
         },
         reloadDrawerProducts ({commit}, payload = null) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(host + '/product')
                 .then(response => {
@@ -139,8 +138,7 @@ export default {
                 })
         },
         getResetProducts ({commit}) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(host + '/product')
             .then(response => {
@@ -154,8 +152,7 @@ export default {
             })
         },
         getResetProduct ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/product/${payload}/edit`)
                 .then(response => {
@@ -170,8 +167,7 @@ export default {
                 })
         },
         resetProductProfile ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.put(`${host}/product/${payload.id}`, payload)
                 .then(response => {
@@ -200,8 +196,7 @@ export default {
                 })
         },
         resetProductAvatar ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.post(host + '/product/reset/avatar', payload)
                 .then(response => {

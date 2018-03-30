@@ -81,8 +81,7 @@ export default {
         getAllSUStatus ({commit}) {
             // commit('setLoading', true)
 
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(host + '/status')
                 .then(response => {
@@ -95,8 +94,7 @@ export default {
                 })
         },
         getAllTotalStatus ({commit}) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(host + '/total_status')
                 .then(response => {
@@ -107,8 +105,7 @@ export default {
                 })
         },
         getSingleSUStatue ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/status/${payload}`)
                 .then(response => {
@@ -121,8 +118,7 @@ export default {
         getSingleTotalStatus ({commit}, payload) {
             // commit('setLoading', true)
 
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/total_status/${payload}`)
                 .then(response => {
@@ -136,8 +132,7 @@ export default {
                 })
         },
         getCoordinate ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/coordinate/${payload}`)
             .then(response => {
@@ -153,8 +148,7 @@ export default {
         getAlarms ({commit}, payload) {
             commit('setLoading', true)
 
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/alarm?product_id=${payload}`)
                 .then(response => {
@@ -169,8 +163,7 @@ export default {
         getAlarm ({commit}, payload) {
             commit('setLoading', true)
 
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/alarm/${payload.id}?code=${payload.code}`)
                 .then(response => {
@@ -183,8 +176,7 @@ export default {
                 })
         },
         getProductCustomerSetting ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/product/customer/setting?product_id=${payload}`)
             .then(response => {
@@ -198,8 +190,7 @@ export default {
             })
         },
         resetProductCustomerSetting ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.post(`${host}/product/customer/setting`, payload)
                 .then(response => {

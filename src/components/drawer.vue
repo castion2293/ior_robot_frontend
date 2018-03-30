@@ -137,6 +137,16 @@
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
                     </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/throughput/daily/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>每日產能</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/throughput/cumulate/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>累計產能</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
                     <v-list-tile ripple @click="closingDrawer">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>稼動率</b></v-list-tile-title>
@@ -180,7 +190,7 @@
                             <v-list-tile-title class="grey--text text--darken-1"><b>產品設定</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userNotication">
+                    <v-list-tile ripple @click="closingDrawer" to="/dashboard/settings/userNotification">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>警報設定</b></v-list-tile-title>
                         </v-list-tile-content>

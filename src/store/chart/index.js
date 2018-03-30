@@ -35,8 +35,7 @@ export default {
     },
     actions: {
         alarmChatSetting ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             axios.get(`${host}/alarm?product_id=${payload}`)
             .then(response => {

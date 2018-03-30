@@ -2,25 +2,24 @@
     <v-app>
         <loader v-if="loading"></loader>
 
-        <h1>User Notification Setting</h1>
+        <h1>Cumulate</h1>
 
         <drawer></drawer>
     </v-app>
+
 </template>
 
 <script>
-    import drawer from '../drawer'
-    import loader from '../loader'
+    import drawer from '../../drawer'
+    import loader from '../../loader'
 
     export default {
-        name: "user-notication",
+        name: "CumulateThroughput",
+        props: ['product_id'],
         components: {
             drawer,
             loader
         },
-        mounted () {
-            this.$store.dispatch('takeLoading', true)
-        }
     }
 </script>
 

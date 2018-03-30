@@ -10,15 +10,22 @@ export default {
             token_name: '',
             id: ''
         },
+        alarmSetting: {}
     },
     getters: {
         user (state) {
             return state.user
+        },
+        alarmSetting (state) {
+            return state.alarmSetting
         }
     },
     mutations: {
         setUser (state, payload) {
             state.user = payload
+        },
+        setAlarmSetting (state, payload) {
+            state.alarmSetting = payload
         }
     },
     actions: {
@@ -109,8 +116,7 @@ export default {
             }
         },
         resetUserProfile ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             payload['token_name'] = localStorage.getItem('token_name')
 
@@ -130,7 +136,7 @@ export default {
 
                     setTimeout( () => {
                         commit('setSuccessSnackbar', false)
-                    }, 3000);
+                    }, 3000)
 
                 })
                 .catch(error => {
@@ -140,12 +146,11 @@ export default {
 
                     setTimeout( () => {
                         commit('setFailureSnackbar', false)
-                    }, 3000);
+                    }, 3000)
                 })
         },
         resetUserPassword ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             payload['token_name'] = localStorage.getItem('token_name')
 
@@ -163,7 +168,7 @@ export default {
 
                 setTimeout( () => {
                     commit('setSuccessSnackbar', false)
-                }, 3000);
+                }, 3000)
             })
             .catch(error => {
                 if (Boolean(error.response.data.error)) {
@@ -176,12 +181,11 @@ export default {
 
                 setTimeout( () => {
                     commit('setFailureSnackbar', false)
-                }, 3000);
+                }, 3000)
             })
         },
         resetUserAvatar ({commit}, payload) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-            axios.defaults.headers.common['Accept'] = 'application/json'
+            this.dispatch('setAuthentication')
 
             payload['token_name'] = localStorage.getItem('token_name')
 
@@ -199,7 +203,7 @@ export default {
 
                 setTimeout( () => {
                     commit('setSuccessSnackbar', false)
-                }, 3000);
+                }, 3000)
             })
             .catch(error => {
                 console.log(error)
@@ -208,8 +212,44 @@ export default {
 
                 setTimeout( () => {
                     commit('setFailureSnackbar', false)
-                }, 3000);
+                }, 3000)
             })
+        },
+        getAlarmSetting ({commit}) {
+            this.dispatch('setAuthentication')
+
+            axios.get(host + '/user/alarm/setting')
+                .then(response => {
+                    commit('setAlarmSetting', response.data)
+
+                    commit('setLoading', false)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        resetAlarmSetting ({commit}, payload) {
+            this.dispatch('setAuthentication')
+
+            axios.post(host + '/user/alarm/setting', payload)
+                .then(response => {
+                    commit('setAlarmSetting', response.data)
+
+                    commit('setSuccessSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setSuccessSnackbar', false)
+                    }, 3000)
+                })
+                .catch(error => {
+                    console.log(error)
+
+                    commit('setFailureSnackbar', true)
+
+                    setTimeout( () => {
+                        commit('setFailureSnackbar', false)
+                    }, 3000)
+                })
         },
         setUserLocalStorage ({commit}, payload) {
             localStorage.setItem('token', payload.token)
@@ -226,6 +266,10 @@ export default {
             localStorage.removeItem('photo')
             localStorage.removeItem('token_name')
             localStorage.removeItem('id')
+        },
+        setAuthentication ({commit}) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+            axios.defaults.headers.common['Accept'] = 'application/json'
         }
     }
 }

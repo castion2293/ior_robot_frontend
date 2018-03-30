@@ -6,6 +6,7 @@ import data from './data'
 import shared from './shared'
 import chart from './chart'
 import drawer from './drawer'
+import throughput from './throughput'
 
 Vue.use(Vuex)
 
@@ -17,5 +18,6 @@ export const store = new Vuex.Store({
         shared: shared,
         chart: chart,
         drawer: drawer,
+        throughput: throughput,
     }
 })

@@ -42,7 +42,7 @@
                   </v-list-tile>
               </v-list>
               <v-list>
-                  <v-list-tile @click="" to="/dashboard/settings/userNotication">
+                  <v-list-tile @click="" to="/dashboard/settings/userNotification">
                       <v-icon class="mr-3" color="blue lighten-3">notifications</v-icon>
                       <v-list-tile-title class="mr-3"><strong>警報設定</strong></v-list-tile-title>
                   </v-list-tile>
