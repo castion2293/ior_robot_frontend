@@ -11,7 +11,7 @@
                 <v-flex md6 sm12 xs12>
                     <v-card class="white--text">
                         <v-card-title primary-title class="teal accent-3" >
-                            <div class="headline"><strong>本日產能 ({{ OK_Throughput.DATE }})</strong></div>
+                            <div class="headline"><strong>本日產能 ({{ today }})</strong></div>
                         </v-card-title>
                         <v-card-text class="white">
                             <v-container
@@ -24,14 +24,18 @@
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
-                                        <strong>{{ OK_Throughput.NUMBER }}</strong>
+                                        <strong v-if="Daily_Throughput">{{ Daily_Throughput.OK_Throughput }}</strong>
+                                        <strong v-else>0</strong>
                                     </h1>
                                 </v-card-text>
                                 <v-divider></v-divider>
                                 <v-card-title>
                                     <p class="headline grey--text text--darken-2"><strong>NG品:</strong></p>
                                     <v-spacer></v-spacer>
-                                    <p class="text-xs-center headline red--text text--darken-1"><strong>{{ NG_Throughput.NUMBER }}</strong></p>
+                                    <p class="text-xs-center headline red--text text--darken-1">
+                                        <strong v-if="Daily_Throughput">{{ Daily_Throughput.NG_Throughput }}</strong>
+                                        <strong v-else>0</strong>
+                                    </p>
                                 </v-card-title>
                             </v-container>
                         </v-card-text>
@@ -48,7 +52,10 @@
                             <v-card-title>
                                 <p class="headline grey--text text--darken-2"><strong>本日良率: </strong></p>
                                 <v-spacer></v-spacer>
-                                <p class="headline grey--text text--darken-2"><strong>{{ rate }} %</strong></p>
+                                <p class="headline grey--text text--darken-2">
+                                    <strong v-if="Daily_Throughput">{{ Daily_Throughput.rate }} %</strong>
+                                    <strong v-else>0 %</strong>
+                                </p>
                             </v-card-title>
                         </v-card-text>
                     </v-card>
@@ -69,6 +76,11 @@
     export default {
         name: "dailyThroughput",
         props: ['product_id'],
+        data () {
+            return {
+                today: ''
+            }
+        },
         components: {
             drawer,
             loader,
@@ -77,28 +89,19 @@
         computed: {
             ...mapGetters([
                 'loading',
-                'OK_Throughput',
-                'NG_Throughput'
+                'Daily_Throughput'
             ]),
-            rate () {
-                let OK_NUMBER = parseFloat(this.OK_Throughput.NUMBER)
-                let NG_NUMBER = parseFloat(this.NG_Throughput.NUMBER)
-
-                return ((OK_NUMBER / (OK_NUMBER + NG_NUMBER)) * 100).toFixed(1)
-            }
         },
         mounted () {
             let date = new Date()
+            this.today = `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}-${date.getDate().toString()}`
 
             let payload = {
                 product_id: this.product_id,
-                today: `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}-${date.getDate().toString()}`
+                today: this.today
             }
 
-            this.$store.dispatch('getOKThroughputForToday', payload)
-            this.$store.dispatch('getNGThroughputForToday', payload)
-
-
+            this.$store.dispatch('getDailyThroughput', payload)
         }
     }
 </script>

@@ -2,7 +2,75 @@
     <v-app>
         <loader v-if="loading"></loader>
 
-        <h1>Cumulate</h1>
+        <v-container
+                style="min-height: 0;"
+                grid-list-lg
+                mt-3
+        >
+            <v-layout row wrap>
+                <v-flex xs12>
+                    <v-card class="grey lighten-4">
+                        <v-card-title primary-title class="teal lighten-2" >
+                            <div class="headline white--text"><strong>每日產能</strong></div>
+                        </v-card-title>
+                        <cumulateThroughputLineChart :start="startDate" :end="endDate"></cumulateThroughputLineChart>
+                    </v-card>
+                </v-flex>
+
+                <v-flex md6 sm12 xs12>
+                    <v-card class="white--text">
+                        <v-card-title primary-title class="teal accent-3" >
+                            <div class="headline"><strong>產能 ({{startDate}} ~ {{endDate}})</strong></div>
+                        </v-card-title>
+                        <v-card-text class="white">
+                            <v-container
+                                    fluid
+                                    style="min-height: 0;"
+                                    grid-list-lg
+                            >
+                                <v-card-title>
+                                    <span class="headline grey--text text--darken-2"><strong>OK品:</strong></span>
+                                </v-card-title>
+                                <v-card-text>
+                                    <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
+                                        <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.total_ok }}</strong>
+                                        <strong v-else>0</strong>
+                                    </h1>
+                                    <v-divider></v-divider>
+                                    <v-card-title>
+                                        <p class="headline grey--text text--darken-2"><strong>NG品:</strong></p>
+                                        <v-spacer></v-spacer>
+                                        <p class="text-xs-center headline red--text text--darken-1">
+                                            <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.total_ng }}</strong>
+                                            <strong v-else>0</strong>
+                                        </p>
+                                    </v-card-title>
+                                </v-card-text>
+                            </v-container>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+                <v-flex md6 sm12 xs12>
+                    <v-card class="white--text">
+                        <v-card-title primary-title class="orange accent-2" >
+                            <div class="headline"><strong>比例圖 ({{startDate}} ~ {{endDate}})</strong></div>
+                        </v-card-title>
+                        <v-card-text class="white">
+                            <cumulateThroughputPieChart></cumulateThroughputPieChart>
+                            <v-divider></v-divider>
+                            <v-card-title>
+                                <p class="headline grey--text text--darken-2"><strong>良率: </strong></p>
+                                <v-spacer></v-spacer>
+                                <p class="headline grey--text text--darken-2">
+                                    <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.rate }} %</strong>
+                                    <strong v-else>0 %</strong>
+                                </p>
+                            </v-card-title>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
 
         <drawer></drawer>
     </v-app>
@@ -12,14 +80,49 @@
 <script>
     import drawer from '../../drawer'
     import loader from '../../loader'
+    import { mapGetters } from 'vuex'
+    import cumulateThroughputPieChart from '../charts/desktop/cumulateThroughputPieChart'
+    import cumulateThroughputLineChart from '../charts/desktop/cumulateThroughputLineChart'
 
     export default {
         name: "CumulateThroughput",
         props: ['product_id'],
+        data () {
+            return {
+                startDate: '',
+                endDate: ''
+            }
+        },
         components: {
             drawer,
-            loader
+            loader,
+            cumulateThroughputPieChart,
+            cumulateThroughputLineChart
         },
+        computed: {
+            ...mapGetters([
+                'loading',
+                'Cumulate_Throughput'
+            ]),
+        },
+        mounted () {
+            this.startDate = this.findDate(13)
+            this.endDate = this.findDate(0)
+
+            let payload = {
+                product_id: this.product_id,
+                today: this.endDate
+            }
+
+            this.$store.dispatch('getCumulateThroughput', payload)
+        },
+        methods: {
+            findDate (subDay) {
+                let date = new Date(new Date().getTime() - 86400000 * subDay)
+
+                return `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}-${date.getDate().toString()}`
+            }
+        }
     }
 </script>
 

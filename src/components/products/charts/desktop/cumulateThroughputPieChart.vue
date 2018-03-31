@@ -8,7 +8,7 @@
     import { mapGetters } from 'vuex'
 
     export default {
-        name: "DailyThroughputPieChart",
+        name: "cumulateThroughputPieChart",
         data () {
             return {
                 myChart: '',
@@ -44,7 +44,7 @@
         },
         computed: {
             ...mapGetters([
-                'Daily_Throughput',
+                'Cumulate_Throughput',
             ]),
         },
         mounted () {
@@ -56,7 +56,7 @@
         methods: {
             fetchData () {
                 this.config.data.labels = ['OK品', 'NG品']
-                this.config.data.datasets[0].data = [this.Daily_Throughput.OK_Throughput, this.Daily_Throughput.NG_Throughput]
+                this.config.data.datasets[0].data = [this.Cumulate_Throughput.total_ok, this.Cumulate_Throughput.total_ng]
 
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)

@@ -1,38 +1,39 @@
 export default {
     state: {
-        OK_Throughput: {
+        Daily_Throughput: {
             DATE: '',
-            NUMBER: ''
+            OK_Throughput: '',
+            NG_Throughput: ''
         },
-        NG_Throughput: {
-            NUMBER: ''
+        Cumulate_Throughput: {
+
         }
     },
     getters: {
-        OK_Throughput (state) {
-            return state.OK_Throughput
+        Daily_Throughput (state) {
+            return state.Daily_Throughput
         },
-        NG_Throughput (state) {
-            return state.NG_Throughput
+        Cumulate_Throughput (state) {
+            return state.Cumulate_Throughput
         }
     },
     mutations: {
-        setOKThroughput (state, payload) {
-            state.OK_Throughput = payload
+        setDailyThroughput (state, payload) {
+            state.Daily_Throughput = payload
         },
-        setNGThroughput (state, payload) {
-            state.NG_Throughput = payload
+        setCumulateThroughput (state, payload) {
+            state.Cumulate_Throughput = payload
         }
     },
     actions: {
-        getOKThroughputForToday ({commit}, payload) {
+        getDailyThroughput ({commit}, payload) {
             commit('setLoading', true)
 
             this.dispatch('setAuthentication')
 
-            axios.get(`${host}/throughput/ok?product_id=${payload.product_id}&today=${payload.today}`)
+            axios.get(`${host}/throughput/daily?product_id=${payload.product_id}&today=${payload.today}`)
                 .then(response => {
-                    commit('setOKThroughput', response.data.items)
+                    commit('setDailyThroughput', response.data)
 
                     commit('setLoading', false)
                 })
@@ -40,20 +41,20 @@ export default {
                     console.log(error)
                 })
         },
-        getNGThroughputForToday ({commit}, payload) {
+        getCumulateThroughput ({commit}, payload) {
             commit('setLoading', true)
 
             this.dispatch('setAuthentication')
 
-            axios.get(`${host}/throughput/ng?product_id=${payload.product_id}&today=${payload.today}`)
-            .then(response => {
-                commit('setNGThroughput', response.data.items)
+            axios.get(`${host}/throughput/cumulate?product_id=${payload.product_id}&two_week=${payload.today}`)
+                .then(response => {
+                    commit('setCumulateThroughput', response.data)
 
-                commit('setLoading', false)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+                    commit('setLoading', false)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     }
 }
