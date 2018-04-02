@@ -176,9 +176,9 @@
 
                 return this.order(alarm_group)
             },
-            token () {
-                return 'Bearer ' + localStorage.getItem('token')
-            }
+            // token () {
+            //     return 'Bearer ' + localStorage.getItem('token')
+            // }
         },
         methods: {
             alarmDetailed (id, code) {
@@ -191,7 +191,7 @@
                 return _.orderBy(group, ['date', 'time'], ['asc', 'asc'])
 
             },
-        }
+        },
     }
 </script>
 

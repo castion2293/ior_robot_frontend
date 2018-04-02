@@ -70,6 +70,21 @@
                         </v-card-text>
                     </v-card>
                 </v-flex>
+
+                <v-flex xs12>
+                    <v-card color="red lighten-2" class="white--text">
+                        <v-card-title primary-title>
+                            <div class="headline"><strong></strong>每日產能報表</div>
+                        </v-card-title>
+                    </v-card>
+                    <v-card class="white">
+                        <monthlyThroughputList
+                                :product_id="product_id"
+                                :month="month"
+                        ></monthlyThroughputList>
+                    </v-card>
+                </v-flex>
+
             </v-layout>
         </v-container>
 
@@ -84,13 +99,14 @@
     import monthlyThroughputPieChart from '../charts/desktop/monthlyThroughputPieChart'
     import monthlyThroughputLineChart from '../charts/desktop/monthlyThroughputLineChart'
     import monthlyThroughputLineChartMobile from '../charts/mobile/monthlyThroughputLineChartMobile'
+    import monthlyThroughputList from '../lists/monthlyThroughputList'
 
     export default {
         name: "monthlyThroughput",
         props: ['product_id'],
         data () {
             return {
-                month: ''
+                month: this.findMonth()
             }
         },
         components: {
@@ -98,7 +114,8 @@
             loader,
             monthlyThroughputPieChart,
             monthlyThroughputLineChart,
-            monthlyThroughputLineChartMobile
+            monthlyThroughputLineChartMobile,
+            monthlyThroughputList
         },
         computed: {
             ...mapGetters([
@@ -107,8 +124,6 @@
             ]),
         },
         mounted () {
-            this.month = this.findMonth()
-
             let payload = {
                 product_id: this.product_id,
                 today: this.month
