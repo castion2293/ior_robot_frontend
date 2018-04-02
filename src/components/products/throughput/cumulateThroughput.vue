@@ -38,7 +38,7 @@
                                     grid-list-lg
                             >
                                 <v-card-title>
-                                    <span class="headline grey--text text--darken-2"><strong>OK品:</strong></span>
+                                    <span class="headline grey--text text--darken-2"><strong>良品:</strong></span>
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
@@ -47,7 +47,7 @@
                                     </h1>
                                     <v-divider></v-divider>
                                     <v-card-title>
-                                        <p class="headline grey--text text--darken-2"><strong>NG品:</strong></p>
+                                        <p class="headline grey--text text--darken-2"><strong>不良品:</strong></p>
                                         <v-spacer></v-spacer>
                                         <p class="text-xs-center headline red--text text--darken-1">
                                             <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.total_ng }}</strong>
@@ -78,6 +78,22 @@
                         </v-card-text>
                     </v-card>
                 </v-flex>
+
+                <v-flex xs12>
+                    <v-card color="red lighten-2" class="white--text">
+                        <v-card-title primary-title>
+                            <div class="headline"><strong></strong>每日產能報表 ({{startDate}} ~ {{endDate}})</div>
+                        </v-card-title>
+                    </v-card>
+                    <v-card class="white">
+                       <cumulateThroughputList
+                           :product_id="product_id"
+                           :startDate="startDate"
+                           :endDate="endDate"
+                       ></cumulateThroughputList>
+                    </v-card>
+                </v-flex>
+
             </v-layout>
         </v-container>
 
@@ -93,14 +109,15 @@
     import cumulateThroughputPieChart from '../charts/desktop/cumulateThroughputPieChart'
     import cumulateThroughputLineChart from '../charts/desktop/cumulateThroughputLineChart'
     import cumulateThroughputLineChartMobile from '../charts/mobile/cumulateThroughputLineChartMobile'
+    import cumulateThroughputList from '../lists/cumulateThroughputList'
 
     export default {
         name: "CumulateThroughput",
         props: ['product_id'],
         data () {
             return {
-                startDate: '',
-                endDate: ''
+                startDate: this.findDate(13),
+                endDate: this.findDate(0)
             }
         },
         components: {
@@ -108,7 +125,8 @@
             loader,
             cumulateThroughputPieChart,
             cumulateThroughputLineChart,
-            cumulateThroughputLineChartMobile
+            cumulateThroughputLineChartMobile,
+            cumulateThroughputList
         },
         computed: {
             ...mapGetters([
@@ -117,12 +135,10 @@
             ]),
         },
         mounted () {
-            this.startDate = this.findDate(13)
-            this.endDate = this.findDate(0)
-
             let payload = {
                 product_id: this.product_id,
-                today: this.endDate
+                start_date: this.startDate,
+                end_date: this.endDate
             }
 
             this.$store.dispatch('getCumulateThroughput', payload)

@@ -19,14 +19,14 @@
                         labels: [],
                         datasets: [
                             {
-                                label: 'OK品',
+                                label: '良品',
                                 data: [],
                                 backgroundColor: 'rgba(3, 155, 229, 0.1)',
                                 borderColor: 'rgba(3, 155, 229, 1)',
                                 borderWidth: 1
                             },
                             {
-                                label: 'NG',
+                                label: '不良品',
                                 data: [],
                                 backgroundColor: 'rgba(229, 57, 53, 0.1)',
                                 borderColor: 'rgba(229, 57, 53, 1)',

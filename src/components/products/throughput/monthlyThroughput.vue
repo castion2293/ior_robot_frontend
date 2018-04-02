@@ -30,7 +30,7 @@
                                     grid-list-lg
                             >
                                 <v-card-title>
-                                    <span class="headline grey--text text--darken-2"><strong>OK品:</strong></span>
+                                    <span class="headline grey--text text--darken-2"><strong>良品:</strong></span>
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
@@ -39,7 +39,7 @@
                                     </h1>
                                     <v-divider></v-divider>
                                     <v-card-title>
-                                        <p class="headline grey--text text--darken-2"><strong>NG品:</strong></p>
+                                        <p class="headline grey--text text--darken-2"><strong>不良品:</strong></p>
                                         <v-spacer></v-spacer>
                                         <p class="text-xs-center headline red--text text--darken-1">
                                             <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.total_ng }}</strong>
@@ -74,7 +74,7 @@
                 <v-flex xs12>
                     <v-card color="red lighten-2" class="white--text">
                         <v-card-title primary-title>
-                            <div class="headline"><strong></strong>每日產能報表</div>
+                            <div class="headline"><strong></strong>每日產能報表 ({{ month }})</div>
                         </v-card-title>
                     </v-card>
                     <v-card class="white">

@@ -55,7 +55,7 @@
         },
         methods: {
             fetchData () {
-                this.config.data.labels = ['OK品', 'NG品']
+                this.config.data.labels = ['良品', '不良品']
                 this.config.data.datasets[0].data = [this.Daily_Throughput.OK_Throughput, this.Daily_Throughput.NG_Throughput]
 
                 let ctx = this.$refs.canvas

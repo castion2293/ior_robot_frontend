@@ -70,7 +70,7 @@ export default {
 
             this.dispatch('setAuthentication')
 
-            axios.get(`${host}/throughput/cumulate?product_id=${payload.product_id}&two_week=${payload.today}`)
+            axios.get(`${host}/throughput/cumulate?product_id=${payload.product_id}&interval=${payload.start_date}/${payload.end_date}`)
                 .then(response => {
                     commit('setCumulateThroughput', response.data)
 

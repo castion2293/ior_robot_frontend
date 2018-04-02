@@ -55,7 +55,7 @@
         },
         methods: {
             fetchData () {
-                this.config.data.labels = ['OK品', 'NG品']
+                this.config.data.labels = ['良品', '不良品']
                 this.config.data.datasets[0].data = [this.Cumulate_Throughput.total_ok, this.Cumulate_Throughput.total_ng]
 
                 let ctx = this.$refs.canvas
