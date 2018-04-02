@@ -11,25 +11,17 @@
                 <v-flex xs12>
                     <v-card class="grey lighten-4">
                         <v-card-title primary-title class="teal lighten-2" >
-                            <div class="headline white--text"><strong>每日產能 ({{startDate}} ~ {{endDate}})</strong></div>
+                            <div class="headline white--text"><strong>每日產能 ({{ month }})</strong></div>
                         </v-card-title>
-                        <cumulateThroughputLineChart
-                                :start="startDate"
-                                :end="endDate"
-                                class="hidden-xs-only"
-                        ></cumulateThroughputLineChart>
-                        <cumulateThroughputLineChartMobile
-                                :start="startDate"
-                                :end="endDate"
-                                class="hidden-sm-and-up"
-                        ></cumulateThroughputLineChartMobile>
+                        <monthlyThroughputLineChart :month="month" class="hidden-xs-only"></monthlyThroughputLineChart>
+                        <monthlyThroughputLineChartMobile :month="month" class="hidden-sm-and-up"></monthlyThroughputLineChartMobile>
                     </v-card>
                 </v-flex>
 
                 <v-flex md6 sm12 xs12>
                     <v-card class="white--text">
                         <v-card-title primary-title class="teal accent-3" >
-                            <div class="headline"><strong>產能 ({{startDate}} ~ {{endDate}})</strong></div>
+                            <div class="headline"><strong>本月產能 ({{ month }})</strong></div>
                         </v-card-title>
                         <v-card-text class="white">
                             <v-container
@@ -42,7 +34,7 @@
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
-                                        <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.total_ok }}</strong>
+                                        <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.total_ok }}</strong>
                                         <strong v-else>0</strong>
                                     </h1>
                                     <v-divider></v-divider>
@@ -50,7 +42,7 @@
                                         <p class="headline grey--text text--darken-2"><strong>NG品:</strong></p>
                                         <v-spacer></v-spacer>
                                         <p class="text-xs-center headline red--text text--darken-1">
-                                            <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.total_ng }}</strong>
+                                            <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.total_ng }}</strong>
                                             <strong v-else>0</strong>
                                         </p>
                                     </v-card-title>
@@ -62,16 +54,16 @@
                 <v-flex md6 sm12 xs12>
                     <v-card class="white--text">
                         <v-card-title primary-title class="orange accent-2" >
-                            <div class="headline"><strong>比例圖 ({{startDate}} ~ {{endDate}})</strong></div>
+                            <div class="headline"><strong>比例圖 ({{ month }})</strong></div>
                         </v-card-title>
                         <v-card-text class="white">
-                            <cumulateThroughputPieChart></cumulateThroughputPieChart>
+                            <monthlyThroughputPieChart></monthlyThroughputPieChart>
                             <v-divider></v-divider>
                             <v-card-title>
                                 <p class="headline grey--text text--darken-2"><strong>良率: </strong></p>
                                 <v-spacer></v-spacer>
                                 <p class="headline grey--text text--darken-2">
-                                    <strong v-if="Cumulate_Throughput">{{ Cumulate_Throughput.rate }} %</strong>
+                                    <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.rate }} %</strong>
                                     <strong v-else>0 %</strong>
                                 </p>
                             </v-card-title>
@@ -83,55 +75,52 @@
 
         <drawer></drawer>
     </v-app>
-
 </template>
 
 <script>
     import drawer from '../../drawer'
     import loader from '../../loader'
     import { mapGetters } from 'vuex'
-    import cumulateThroughputPieChart from '../charts/desktop/cumulateThroughputPieChart'
-    import cumulateThroughputLineChart from '../charts/desktop/cumulateThroughputLineChart'
-    import cumulateThroughputLineChartMobile from '../charts/mobile/cumulateThroughputLineChartMobile'
+    import monthlyThroughputPieChart from '../charts/desktop/monthlyThroughputPieChart'
+    import monthlyThroughputLineChart from '../charts/desktop/monthlyThroughputLineChart'
+    import monthlyThroughputLineChartMobile from '../charts/mobile/monthlyThroughputLineChartMobile'
 
     export default {
-        name: "CumulateThroughput",
+        name: "monthlyThroughput",
         props: ['product_id'],
         data () {
             return {
-                startDate: '',
-                endDate: ''
+                month: ''
             }
         },
         components: {
             drawer,
             loader,
-            cumulateThroughputPieChart,
-            cumulateThroughputLineChart,
-            cumulateThroughputLineChartMobile
+            monthlyThroughputPieChart,
+            monthlyThroughputLineChart,
+            monthlyThroughputLineChartMobile
         },
         computed: {
             ...mapGetters([
                 'loading',
-                'Cumulate_Throughput'
+                'Monthly_Throughput'
             ]),
         },
         mounted () {
-            this.startDate = this.findDate(13)
-            this.endDate = this.findDate(0)
+            this.month = this.findMonth()
 
             let payload = {
                 product_id: this.product_id,
-                today: this.endDate
+                today: this.month
             }
 
-            this.$store.dispatch('getCumulateThroughput', payload)
+            this.$store.dispatch('getMonthlyThroughput', payload)
         },
         methods: {
-            findDate (subDay) {
-                let date = new Date(new Date().getTime() - 86400000 * subDay)
+            findMonth () {
+                let date = new Date()
 
-                return `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}-${date.getDate().toString()}`
+                return `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}`
             }
         }
     }

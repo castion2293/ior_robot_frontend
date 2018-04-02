@@ -142,6 +142,11 @@
                             <v-list-tile-title class="grey--text text--darken-1"><b>每日產能</b></v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/throughput/monthly/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>月產能</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
                     <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/throughput/cumulate/${drawer_product.product_id}`">
                         <v-list-tile-content>
                             <v-list-tile-title class="grey--text text--darken-1"><b>累計產能</b></v-list-tile-title>

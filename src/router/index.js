@@ -16,6 +16,7 @@ import alarmDetailed from '../components/products/alarms/alarmDetailed'
 import alarmCharts from '../components/products/alarms/alarmCharts'
 
 import dailyThroughput from '../components/products/throughput/dailyThroughput'
+import monthlyThroughput from '../components/products/throughput/monthlyThroughput'
 import cumulateThroughput from '../components/products/throughput/cumulateThroughput'
 
 import userBasic from '../components/settings/userBasic'
@@ -101,6 +102,13 @@ export default new Router({
             path: '/dashboard/products/throughput/daily/:product_id',
             name: 'dailyThroughput',
             component: dailyThroughput,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/throughput/monthly/:product_id',
+            name: 'monthlyThroughput',
+            component: monthlyThroughput,
             props: true,
             beforeEnter: AuthGuard
         },
