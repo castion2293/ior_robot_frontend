@@ -94,8 +94,16 @@
 
                         <v-divider></v-divider>
 
-                        <alarmsLineChart class="hidden-xs-only"></alarmsLineChart>
-                        <alarms-line-chart-mobile class="hidden-sm-and-up"></alarms-line-chart-mobile>
+                        <alarmsLineChart
+                            :start="startDate"
+                            :end="endDate"
+                            class="hidden-xs-only"
+                        ></alarmsLineChart>
+                        <alarms-line-chart-mobile
+                            :start="startDate"
+                            :end="endDate"
+                            class="hidden-sm-and-up"
+                        ></alarms-line-chart-mobile>
                     </v-card>
                 </v-flex>
 

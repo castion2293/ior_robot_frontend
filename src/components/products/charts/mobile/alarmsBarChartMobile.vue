@@ -76,8 +76,13 @@
         mounted () {
             setTimeout(() => {
                 this.fetchData()
-            }, 2000)
+            }, 3000)
 
+            Event.listen('alarmChart', () => {
+                setTimeout(() => {
+                    this.updateDate()
+                }, 3000)
+            })
         },
         methods: {
             fetchData () {
@@ -87,6 +92,12 @@
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)
             },
+            updateDate () {
+                this.config.data.labels = this.code_names
+                this.config.data.datasets[0].data = this.code_numbers
+
+                this.myChart.update()
+            }
         }
     }
 </script>
