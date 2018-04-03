@@ -47,8 +47,7 @@
         mounted () {
             setTimeout(() => {
                 this.fetchData()
-            }, 2000)
-
+            }, 3000)
         },
         methods: {
             fetchData () {

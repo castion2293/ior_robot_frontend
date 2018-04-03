@@ -9,7 +9,7 @@
 
     export default {
         name: "alarms-line-chart",
-        props: ['product_id'],
+        props: ['product_id', 'start', 'end'],
         data () {
             return {
                 myChart: '',
@@ -45,14 +45,15 @@
             ])
         },
         mounted () {
-            this.$store.dispatch('alarmChatSetting', this.product_id)
-
-            this.$store.dispatch('takeLoading', true)
-
             setTimeout(() => {
                 this.fetchData()
-                this.$store.dispatch('takeLoading', false)
-            }, 2000)
+            }, 3000)
+
+            Event.listen('alarmChart', () => {
+                setTimeout(() => {
+                    this.updateDate()
+                }, 3000)
+            })
         },
         methods: {
             fetchData () {
@@ -62,6 +63,12 @@
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)
             },
+            updateDate () {
+                this.config.data.labels = this.dates
+                this.config.data.datasets[0].data = this.numbers
+
+                this.myChart.update()
+            }
         }
     }
 </script>

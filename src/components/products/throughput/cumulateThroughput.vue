@@ -219,9 +219,6 @@
             ]),
         },
         mounted () {
-            // this.set_start_date = this.startDate
-            // this.set_end_date =  this.endDate
-
             let payload = {
                 product_id: this.product_id,
                 start_date: this.startDate,

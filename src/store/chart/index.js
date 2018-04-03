@@ -35,14 +35,18 @@ export default {
     },
     actions: {
         alarmChatSetting ({commit}, payload) {
+            commit('setLoading', true)
+
             this.dispatch('setAuthentication')
 
-            axios.get(`${host}/alarm?product_id=${payload}`)
+            axios.get(`${host}/alarm?product_id=${payload.product_id}&interval=${payload.start_date}/${payload.end_date}`)
             .then(response => {
                 this.dispatch('settingNumbers', response.data.data.items)
-                this.dispatch('settingDates', new Date())
+                this.dispatch('settingDates', payload)
                 this.dispatch('settingCodeNumbers', response.data.data.items)
                 this.dispatch('settingCodeName', response.data.data.items)
+
+                commit('setLoading', false)
             })
             .catch(error => {
                 console.log(error)
@@ -53,7 +57,7 @@ export default {
                 return alarm.ALARM_DATE
             })
 
-            let datesArray = []
+            let datesArray = this.dates
 
             for (let i = 13; i >= 0; i--) {
                 datesArray.push(new Date(new Date().getTime() - 86400000 * i))
@@ -76,10 +80,29 @@ export default {
             commit('setNumbers', numbers)
         },
         settingDates ({commit}, payload) {
+            let firstDay = new Date(payload.start_date).getTime()
+            let lastDay = new Date(payload.end_date).getTime()
+            let interval = (lastDay - firstDay) / 86400000
+
             let datesArray = []
 
-            for (let i = 13; i >= 0; i--) {
-                datesArray.push(new Date(payload.getTime() - 86400000 * i).toLocaleDateString())
+            for (let i = 0; i <= interval; i++) {
+                let date = new Date(firstDay + 86400000 * i)
+                let year = date.getFullYear().toString()
+                let month = (date.getMonth() + 1).toString()
+                let day = date.getDate().toString()
+
+                console.log(month.length)
+
+                if (month.length === 1) {
+                    month = '0' + month
+                }
+
+                if (day.length === 1) {
+                    day = '0' + day
+                }
+
+                datesArray.push(`${month}/${day}`)
             }
 
             commit('setDates', datesArray)
