@@ -58,6 +58,11 @@
                 this.fetchData()
             }, 3000)
 
+            Event.listen('cumulateThroughput', () => {
+                setTimeout(() => {
+                    this.updateDate()
+                }, 3000)
+            })
         },
         methods: {
             fetchData () {
@@ -68,12 +73,20 @@
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)
             },
+            updateDate () {
+                this.config.data.labels = this.findLineLabels(this.start, this.end)
+                this.config.data.datasets[0].data = this.findOKDataSets()
+                this.config.data.datasets[1].data = this.findNGDateSets()
+
+                this.myChart.update();
+            },
             findLineLabels (first, last) {
                 let firstDay = new Date(first).getTime()
                 let lastDay = new Date(last).getTime()
                 let interval = (lastDay - firstDay) / 86400000
 
                 let labels = []
+                this.dates = []
 
                 for (let i = 0; i <= interval; i++) {
                     let date = new Date(firstDay + 86400000 * i)

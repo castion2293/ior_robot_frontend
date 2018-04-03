@@ -38,6 +38,9 @@ export default {
         clearError ({commit}) {
             commit('setError', null)
         },
+        takeError ({commit}, payload) {
+            commit('setError', payload)
+        },
         takeLoading({commit}, payload) {
             commit('setLoading', payload)
         }

@@ -58,6 +58,11 @@
                 this.fetchData()
             }, 3000)
 
+            Event.listen('monthlyThroughput', () => {
+                setTimeout(() => {
+                    this.updateDate()
+                }, 3000)
+            });
         },
         methods: {
             fetchData () {
@@ -68,12 +73,20 @@
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)
             },
+            updateDate () {
+                this.config.data.labels = this.findLineLabels(this.month)
+                this.config.data.datasets[0].data = this.findOKDataSets()
+                this.config.data.datasets[1].data = this.findNGDateSets()
+
+                this.myChart.update();
+            },
             findLineLabels (month) {
                 let firstDay = new Date(month)
 
                 let days = new Date(firstDay.getFullYear(), firstDay.getMonth() + 1, 0).getDate()
 
                 let labels = []
+                this.dates = []
 
                 for (let i = 0; i < days; i++) {
                     let date = new Date(firstDay.getTime() + 86400000 * i)

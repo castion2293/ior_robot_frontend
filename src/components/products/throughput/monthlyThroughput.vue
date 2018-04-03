@@ -13,6 +13,50 @@
                         <v-card-title primary-title class="teal lighten-2" >
                             <div class="headline white--text"><strong>每日產能 ({{ month }})</strong></div>
                         </v-card-title>
+
+                        <v-layout row wrap>
+                            <v-flex md2 offset-md8 sm3 offset-sm7 xs7>
+                                <v-menu
+                                        lazy
+                                        :close-on-content-click="false"
+                                        v-model="menu"
+                                        transition="scale-transition"
+                                        offset-y
+                                        full-width
+                                        :nudge-right="40"
+                                        max-width="500px"
+                                        min-width="290px"
+                                >
+                                    <v-text-field
+                                            slot="activator"
+                                            label="請選擇月份"
+                                            v-model="set_month"
+                                            prepend-icon="event"
+                                            readonly
+                                    ></v-text-field>
+                                    <v-date-picker
+                                            type="month"
+                                            :first-day-of-week="0"
+                                            locale="zh-cn"
+                                            v-model="set_month"
+                                    >
+                                        <template slot-scope="{ save, cancel }">
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="cancel"><strong>取消</strong></v-btn>
+                                                <v-btn flat color="primary" @click="save"><strong>確定</strong></v-btn>
+                                            </v-card-actions>
+                                        </template>
+                                    </v-date-picker>
+                                </v-menu>
+                            </v-flex>
+                            <v-flex md2 sm2 xs2 class="mt-2">
+                                <v-btn color="primary" @click="setMonth">送出</v-btn>
+                            </v-flex>
+                        </v-layout>
+
+                        <v-divider></v-divider>
+
                         <monthlyThroughputLineChart :month="month" class="hidden-xs-only"></monthlyThroughputLineChart>
                         <monthlyThroughputLineChartMobile :month="month" class="hidden-sm-and-up"></monthlyThroughputLineChartMobile>
                     </v-card>
@@ -106,7 +150,9 @@
         props: ['product_id'],
         data () {
             return {
-                month: this.findMonth()
+                month: this.findMonth(),
+                set_month: '',
+                menu: false
             }
         },
         components: {
@@ -124,6 +170,8 @@
             ]),
         },
         mounted () {
+            this.set_month = this.month
+
             let payload = {
                 product_id: this.product_id,
                 today: this.month
@@ -136,6 +184,18 @@
                 let date = new Date()
 
                 return `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}`
+            },
+            setMonth () {
+                this.month = this.set_month
+
+                let payload = {
+                    product_id: this.product_id,
+                    today: this.month
+                }
+
+                this.$store.dispatch('getMonthlyThroughput', payload)
+
+                Event.fire('monthlyThroughput')
             }
         }
     }

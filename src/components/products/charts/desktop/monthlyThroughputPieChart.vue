@@ -52,6 +52,11 @@
                 this.fetchData()
             }, 3000)
 
+            Event.listen('monthlyThroughput', () => {
+                setTimeout(() => {
+                    this.fetchData()
+                }, 3000)
+            });
         },
         methods: {
             fetchData () {

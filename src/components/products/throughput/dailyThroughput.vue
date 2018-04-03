@@ -19,6 +19,49 @@
                                     style="min-height: 0;"
                                     grid-list-lg
                             >
+
+                                <v-layout row wrap>
+                                    <v-flex md8 offset-md1 sm9 offset-sm1 xs12>
+                                        <v-menu
+                                                lazy
+                                                :close-on-content-click="false"
+                                                v-model="menu"
+                                                transition="scale-transition"
+                                                offset-y
+                                                full-width
+                                                :nudge-right="40"
+                                                max-width="500px"
+                                                min-width="290px"
+                                        >
+                                            <v-text-field
+                                                    slot="activator"
+                                                    label="請選擇日期"
+                                                    v-model="date"
+                                                    prepend-icon="event"
+                                                    readonly
+                                            ></v-text-field>
+                                            <v-date-picker
+                                                    :first-day-of-week="0"
+                                                    locale="zh-cn"
+                                                    v-model="date"
+                                            >
+                                                <template slot-scope="{ save, cancel }">
+                                                    <v-card-actions>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn flat color="primary" @click="cancel"><strong>取消</strong></v-btn>
+                                                        <v-btn flat color="primary" @click="save"><strong>確定</strong></v-btn>
+                                                    </v-card-actions>
+                                                </template>
+                                            </v-date-picker>
+                                        </v-menu>
+                                    </v-flex>
+                                    <v-flex md2 sm2 xs2 class="mt-2">
+                                        <v-btn color="primary" @click="setDate">送出</v-btn>
+                                    </v-flex>
+                                </v-layout>
+
+                                <v-divider></v-divider>
+
                                 <v-card-title>
                                     <span class="headline grey--text text--darken-2"><strong>良品:</strong></span>
                                 </v-card-title>
@@ -78,7 +121,10 @@
         props: ['product_id'],
         data () {
             return {
-                today: ''
+                today: '',
+                date: null,
+                menu: false,
+                modal: false
             }
         },
         components: {
@@ -95,6 +141,7 @@
         mounted () {
             let date = new Date()
             this.today = `${date.getFullYear().toString()}-${(date.getMonth() + 1).toString()}-${date.getDate().toString()}`
+            this.date = this.today
 
             let payload = {
                 product_id: this.product_id,
@@ -102,6 +149,20 @@
             }
 
             this.$store.dispatch('getDailyThroughput', payload)
+        },
+        methods: {
+            setDate () {
+                this.today = this.date
+
+                let payload = {
+                    product_id: this.product_id,
+                    today: this.today
+                }
+
+                this.$store.dispatch('getDailyThroughput', payload)
+
+                Event.fire('dailyThroughput');
+            }
         }
     }
 </script>

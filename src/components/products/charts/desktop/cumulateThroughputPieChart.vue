@@ -52,6 +52,11 @@
                 this.fetchData()
             }, 3000)
 
+            Event.listen('cumulateThroughput', () => {
+                setTimeout(() => {
+                    this.updateDate()
+                }, 3000)
+            })
         },
         methods: {
             fetchData () {
@@ -61,6 +66,12 @@
                 let ctx = this.$refs.canvas
                 this.myChart = new Chart(ctx, this.config)
             },
+            updateDate () {
+                this.config.data.labels = ['良品', '不良品']
+                this.config.data.datasets[0].data = [this.Cumulate_Throughput.total_ok, this.Cumulate_Throughput.total_ng]
+
+                this.myChart.update();
+            }
         }
     }
 </script>
