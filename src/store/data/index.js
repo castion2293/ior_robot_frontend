@@ -116,7 +116,7 @@ export default {
                 })
         },
         getSingleTotalStatus ({commit}, payload) {
-            // commit('setLoading', true)
+            commit('setLoading', true)
 
             this.dispatch('setAuthentication')
 
