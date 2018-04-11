@@ -24,49 +24,49 @@
                                     <p class="subheading text-xs-center">1st</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[0] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[0] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">2ed</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[1] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[1] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">3rd</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[2] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[2] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">4th</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[3] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[3] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">5th</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[4] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[4] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">6th</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[5] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[5] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">7st</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[6] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[6] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">8st</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.JOINT[7] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.JOINT[7] }}</p>
                                 </v-flex>
                             </v-layout>
                         </v-container>
@@ -89,49 +89,49 @@
                                     <p class="subheading text-xs-center">X</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[0] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[0] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">Y</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[1] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[1] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">Z</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[2] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[2] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">A</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[3] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[3] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">B</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[4] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[4] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">C</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[5] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[5] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center"></p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[6] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[6] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center"></p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[7] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[7] }}</p>
                                 </v-flex>
                             </v-layout>
                         </v-container>
@@ -154,49 +154,49 @@
                                     <p class="subheading text-xs-center">X</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[0] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[0] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">Y</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[1] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[1] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">Z</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[2] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[2] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">A</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[3] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[3] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">B</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[4] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[4] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center">C</p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORK[5] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORK[5] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center"></p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[6] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[6] }}</p>
                                 </v-flex>
                                 <v-flex xs3>
                                     <p class="subheading text-xs-center"></p>
                                 </v-flex>
                                 <v-flex xs9>
-                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ coordinate.WORLD[7] }}</p>
+                                    <p class="subheading grey darken-4 green--text text-darken-4 text-xs-center">{{ cor.WORLD[7] }}</p>
                                 </v-flex>
                             </v-layout>
                         </v-container>
@@ -217,6 +217,15 @@
     export default {
         name: "coordinate-status",
         props: ['product_id'],
+        data () {
+            return {
+                cor: {
+                    JOINT: [''],
+                    WORLD: [''],
+                    WORK: ['']
+                }
+            }
+        },
         components: {
             drawer,
             loader
@@ -230,6 +239,21 @@
         mounted () {
             this.$store.dispatch('takeLoading', true)
             this.$store.dispatch('getCoordinate', this.product_id)
+
+            let channel = this.$pusher.subscribe('dynamoDB');
+
+            channel.bind('COR', (Cor_data) => {
+                this.refreshCoordinate(Cor_data)
+            });
+
+            setTimeout(() => {
+                this.cor = this.coordinate
+            }, 3000)
+        },
+        methods: {
+            refreshCoordinate (data) {
+                this.cor = data
+            }
         }
     }
 </script>
