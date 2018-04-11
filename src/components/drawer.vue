@@ -68,7 +68,7 @@
                             <v-icon color="blue darken-1">lightbulb_outline</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title class="blue--text text--darken-1"><b>手臂狀態</b></v-list-tile-title>
+                            <v-list-tile-title class="blue--text text--darken-1"><b>機台狀態</b></v-list-tile-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
@@ -170,6 +170,16 @@
                         <v-list-tile-action>
                             <v-icon color="blue darken-1">keyboard_arrow_down</v-icon>
                         </v-list-tile-action>
+                    </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/maintain/schedule/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>維修時程表</b></v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile ripple @click="closingDrawer" :to="`/dashboard/products/maintain/scheduleSetting/${drawer_product.product_id}`">
+                        <v-list-tile-content>
+                            <v-list-tile-title class="grey--text text--darken-1"><b>維修設定</b></v-list-tile-title>
+                        </v-list-tile-content>
                     </v-list-tile>
                 </v-list-group>
 

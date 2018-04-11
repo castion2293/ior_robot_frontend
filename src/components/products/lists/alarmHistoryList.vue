@@ -21,6 +21,7 @@
                 <!--<input type="hidden" name="Authorization" :value="token">-->
                 <!--<input type="hidden" name="Accept" value="application/json">-->
                 <input type="hidden" name="product_id" :value="product_id">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="blue-grey"
                         class="white--text"
@@ -35,6 +36,7 @@
                 <!--<input type="hidden" name="Authorization" :value="token">-->
                 <!--<input type="hidden" name="Accept" value="application/json">-->
                 <input type="hidden" name="product_id" :value="product_id">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="success"
                         class="white--text"
@@ -161,6 +163,7 @@
         computed: {
             ...mapGetters([
                 'alarms',
+                'user'
             ]),
             items () {
                 let alarm_group =  _.map(this.alarms, alarm =>{

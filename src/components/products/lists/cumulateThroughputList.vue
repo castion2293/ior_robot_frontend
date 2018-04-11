@@ -4,6 +4,7 @@
             <form :action="`${host}/cumulatethroughput/export/pdf`" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="product_id" :value="product_id">
                 <input type="hidden" name="interval" :value="`${startDate}/${endDate}`">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="blue-grey"
                         class="white--text"
@@ -16,6 +17,7 @@
             <form :action="`${host}/cumulatethroughput/export/excel`" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="product_id" :value="product_id">
                 <input type="hidden" name="interval" :value="`${startDate}/${endDate}`">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="success"
                         class="white--text"
@@ -111,6 +113,7 @@
         computed: {
             ...mapGetters([
                 'Cumulate_Throughput',
+                'user'
             ]),
             items () {
                 let throughput_group =  _.map(this.Cumulate_Throughput.items, throughput =>{

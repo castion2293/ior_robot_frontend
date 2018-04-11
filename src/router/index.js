@@ -19,6 +19,9 @@ import dailyThroughput from '../components/products/throughput/dailyThroughput'
 import monthlyThroughput from '../components/products/throughput/monthlyThroughput'
 import cumulateThroughput from '../components/products/throughput/cumulateThroughput'
 
+import schedule from '../components/products/maintain/schedule'
+import scheduleSetting from '../components/products/maintain/scheduleSetting'
+
 import userBasic from '../components/settings/userBasic'
 import userProducts from '../components/settings/userProducts'
 import userProduct from '../components/settings/userProduct'
@@ -116,6 +119,20 @@ export default new Router({
             path: '/dashboard/products/throughput/cumulate/:product_id',
             name: 'cumulateThroughput',
             component: cumulateThroughput,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/maintain/schedule/:product_id',
+            name: 'schedule',
+            component: schedule,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/dashboard/products/maintain/scheduleSetting/:product_id',
+            name: 'scheduleSetting',
+            component: scheduleSetting,
             props: true,
             beforeEnter: AuthGuard
         },

@@ -30,6 +30,15 @@ Vue.use(Vuetify, { theme: {
   warning: '#FFC107'
 }})
 
+// pusher
+Vue.use(require('vue-pusher'), {
+    api_key: '8dcd4bb98edf57d88ec7',
+    options: {
+        cluster: 'mt1',
+        encrypted: true,
+    }
+});
+
 window._ = lodash
 
 window.Event = new class {

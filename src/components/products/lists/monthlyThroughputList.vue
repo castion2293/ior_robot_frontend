@@ -4,6 +4,7 @@
             <form :action="`${host}/monthlythroughput/export/pdf`" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="product_id" :value="product_id">
                 <input type="hidden" name="monthly" :value="month">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="blue-grey"
                         class="white--text"
@@ -16,6 +17,7 @@
             <form :action="`${host}/monthlythroughput/export/excel`" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="product_id" :value="product_id">
                 <input type="hidden" name="monthly" :value="month">
+                <input type="hidden" name="user_id" :value="user.id">
                 <v-btn
                         color="success"
                         class="white--text"
@@ -112,6 +114,7 @@
         computed: {
             ...mapGetters([
                 'Monthly_Throughput',
+                'user'
             ]),
             items () {
                 let throughput_group =  _.map(this.Monthly_Throughput.items, throughput =>{
