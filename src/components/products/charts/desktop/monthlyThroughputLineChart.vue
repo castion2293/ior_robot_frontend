@@ -113,7 +113,7 @@
             },
             findOKDataSets () {
                 return  _.map(_.map(this.dates, (date) => {
-                    return _.find(this.Monthly_Throughput.items, (item) => {
+                    return _.find(this.Monthly_Throughput.items_ok, (item) => {
                         return item.date === date
                     })
                 }), (e) => {
@@ -126,7 +126,7 @@
             },
             findNGDateSets () {
                 return  _.map(_.map(this.dates, (date) => {
-                    return _.find(this.Monthly_Throughput.items, (item) => {
+                    return _.find(this.Monthly_Throughput.items_ng, (item) => {
                         return item.date === date
                     })
                 }), (e) => {

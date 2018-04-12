@@ -74,9 +74,8 @@
                     <td style="cursor:pointer;">
                         {{ props.item.date.toLocaleDateString() }}
                     </td>
-                    <td class="text-xs-right">{{ props.item.ok }}</td>
-                    <td class="text-xs-right">{{ props.item.ng }}</td>
-                    <td class="text-xs-right">{{ props.item.product_id }}</td>
+                    <td>{{ props.item.ok }}</td>
+                    <td>{{ props.item.ng }}</td>
                 </template>
             </v-data-table>
         </v-container>
@@ -94,15 +93,9 @@
                 search: '',
                 selected: [],
                 headers: [
-                    {
-                        text: '日期',
-                        align: 'left',
-                        sortable: false,
-
-                    },
-                    { text: 'OK品', sortable: false },
-                    { text: 'NG品', sortable: false },
-                    { text: '產品編號', sortable: false },
+                    { text: '日期', align: 'left', sortable: false },
+                    { text: 'OK品', align: 'left', sortable: false },
+                    { text: 'NG品', align: 'left', sortable: false },
                 ],
                 row_per_page: [10, 25, 50, { text: "All", value: -1 }],
                 myOrder: 'desc',
@@ -116,13 +109,22 @@
                 'user'
             ]),
             items () {
-                let throughput_group =  _.map(this.Cumulate_Throughput.items, throughput =>{
+                let date_ok = _.map(this.Cumulate_Throughput.items_ok, item => {
+                    return item.date
+                })
+
+                let date_ng = _.map(this.Cumulate_Throughput.items_ng, item => {
+                    return item.date
+                })
+
+                let dates = _.union(date_ok, date_ng)
+
+                let throughput_group =  _.map(dates, date =>{
                     return {
                         value: false,
-                        date: new Date(throughput.date),
-                        ok: throughput.OK_Throughput,
-                        ng: throughput.NG_Throughput,
-                        product_id: throughput.product_id
+                        date: new Date(date),
+                        ok: this.findOKNumber(this.Cumulate_Throughput.items_ok, date),
+                        ng: this.findNGNumber(this.Cumulate_Throughput.items_ng, date),
                     }
                 })
 
@@ -138,6 +140,28 @@
                     return _.orderBy(group, ['date'], ['desc'])
                 }
                 return _.orderBy(group, ['date'], ['asc'])
+            },
+            findOKNumber (items, date) {
+                let foo = _.find(items, function (ok) {
+                    return ok.date === date
+                })
+
+                if (Boolean(foo)) {
+                    return foo.OK_Throughput
+                } else {
+                    return 0
+                }
+            },
+            findNGNumber (items, date) {
+                let foo = _.find(this.Cumulate_Throughput.items_ng, function (ng) {
+                    return ng.date === date
+                })
+
+                if (Boolean(foo)) {
+                    return foo.NG_Throughput
+                } else {
+                    return 0
+                }
             },
         },
     }

@@ -78,7 +78,7 @@
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
-                                        <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.total_ok }}</strong>
+                                        <strong v-if="Monthly_Throughput.total_ok">{{ Monthly_Throughput.total_ok }}</strong>
                                         <strong v-else>0</strong>
                                     </h1>
                                     <v-divider></v-divider>
@@ -86,7 +86,7 @@
                                         <p class="headline grey--text text--darken-2"><strong>不良品:</strong></p>
                                         <v-spacer></v-spacer>
                                         <p class="text-xs-center headline red--text text--darken-1">
-                                            <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.total_ng }}</strong>
+                                            <strong v-if="Monthly_Throughput.total_ng">{{ Monthly_Throughput.total_ng }}</strong>
                                             <strong v-else>0</strong>
                                         </p>
                                     </v-card-title>
@@ -107,7 +107,7 @@
                                 <p class="headline grey--text text--darken-2"><strong>良率: </strong></p>
                                 <v-spacer></v-spacer>
                                 <p class="headline grey--text text--darken-2">
-                                    <strong v-if="Monthly_Throughput">{{ Monthly_Throughput.rate }} %</strong>
+                                    <strong v-if="Monthly_Throughput.rate">{{ Monthly_Throughput.rate }} %</strong>
                                     <strong v-else>0 %</strong>
                                 </p>
                             </v-card-title>

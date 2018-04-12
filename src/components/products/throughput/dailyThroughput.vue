@@ -67,7 +67,7 @@
                                 </v-card-title>
                                 <v-card-text>
                                     <h1 class="text-xs-center light-blue--text text-darken-1" style="font-size:12em;">
-                                        <strong v-if="Daily_Throughput">{{ Daily_Throughput.OK_Throughput }}</strong>
+                                        <strong v-if="Daily_Throughput.OK_Throughput">{{ Daily_Throughput.OK_Throughput }}</strong>
                                         <strong v-else>0</strong>
                                     </h1>
                                 </v-card-text>
@@ -76,7 +76,7 @@
                                     <p class="headline grey--text text--darken-2"><strong>不良品:</strong></p>
                                     <v-spacer></v-spacer>
                                     <p class="text-xs-center headline red--text text--darken-1">
-                                        <strong v-if="Daily_Throughput">{{ Daily_Throughput.NG_Throughput }}</strong>
+                                        <strong v-if="Daily_Throughput.NG_Throughput">{{ Daily_Throughput.NG_Throughput }}</strong>
                                         <strong v-else>0</strong>
                                     </p>
                                 </v-card-title>
@@ -96,7 +96,7 @@
                                 <p class="headline grey--text text--darken-2"><strong>本日良率: </strong></p>
                                 <v-spacer></v-spacer>
                                 <p class="headline grey--text text--darken-2">
-                                    <strong v-if="Daily_Throughput">{{ Daily_Throughput.rate }} %</strong>
+                                    <strong v-if="Daily_Throughput.rate">{{ Daily_Throughput.rate }} %</strong>
                                     <strong v-else>0 %</strong>
                                 </p>
                             </v-card-title>
